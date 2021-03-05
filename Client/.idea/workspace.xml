@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9d4210e2-34e7-4353-a880-698514419707" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Client.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/client/data/DataConversions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/client/data/DataFileDecrypter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/client/data/DataFileVariables.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/client/data/DataOperations.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/client/entityhandling/EntityHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/client/entityhandling/defs/DoorDef.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/client/entityhandling/defs/ElevationDef.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/client/entityhandling/defs/EntityDef.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/client/entityhandling/defs/GameObjectDef.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/client/entityhandling/defs/ItemDef.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/client/entityhandling/defs/NPCDef.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/client/entityhandling/defs/PrayerDef.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/client/entityhandling/defs/SpellDef.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/client/entityhandling/defs/TileDef.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/client/entityhandling/defs/extras/AnimationDef.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/client/entityhandling/defs/extras/TextureDef.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/client/model/Sector.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/client/model/Sprite.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/client/model/Tile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/interfaces/InputListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/interfaces/MenuAction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/interfaces/NComponent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/interfaces/NCustomComponent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/interfaces/NRightClickMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/interfaces/misc/AchievementGUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/interfaces/misc/AuctionHouse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/interfaces/misc/BankInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/interfaces/misc/BankPinInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/interfaces/misc/DoSkillInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/interfaces/misc/ExperienceConfigInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/interfaces/misc/FishingTrawlerInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/interfaces/misc/IronManInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/interfaces/misc/LostOnDeathInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/interfaces/misc/OnlineListInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/interfaces/misc/ProgressBarInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/interfaces/misc/QuestGuideInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/interfaces/misc/SkillGuideInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/interfaces/misc/TerritorySignupInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/interfaces/misc/clan/Clan.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/com/rsclegacy/interfaces/misc/clan/ClanInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/Config.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/MiscFunctions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/RSCharacter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/buffers/BufferStack.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/buffers/RSBuffer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/buffers/RSBufferUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/buffers/RSBuffer_Base.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/buffers/RSBuffer_Bits.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/buffers/RSBuffer_Sound.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/buffers/RSBuffer_Variant2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/buffers/RSBuffer_Variant2_Variant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/buffers/StringEncryption.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/enumerations/FutureJobType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/enumerations/GameMode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/enumerations/GameModeWhat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/enumerations/GameModeWhere.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/enumerations/InputXAction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/enumerations/MenuItemAction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/enumerations/MessageTab.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/enumerations/MessageType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/enumerations/PanelControlType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/enumerations/RSCharacterDirection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/enumerations/SocialPopupMode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/graphics/gui/InputXPrompt.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/graphics/gui/KillAnnouncer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/graphics/gui/KillAnnouncerQueue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/graphics/gui/Menu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/graphics/gui/MenuItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/graphics/gui/MessageHistory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/graphics/gui/Panel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/graphics/gui/SocialLists.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/graphics/three/CollisionFlag.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/graphics/three/ModelFileManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/graphics/three/Polygon.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/graphics/three/RSModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/graphics/three/Scanline.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/graphics/three/Scene.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/graphics/three/Shader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/graphics/three/World.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/graphics/two/Fonts.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/graphics/two/GraphicsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/graphics/two/MudClientGraphics.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/mudclient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/multiclient/ClientPort.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/net/Isaac.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/net/Network_Base.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/net/Network_Socket.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/net/RSSocketFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/net/RSSocketFactory_Base.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/net/SocketProxyFailure.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/util/ArrayUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/util/FastMath.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/util/GenUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/util/RSRuntimeError.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/util/StringUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/util/bzip/BZLib.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src_base/rsc/util/bzip/BZState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RSCLDB.sql" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rscl.client.pc.RSCFrame" />
+      <module name="Client" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9d4210e2-34e7-4353-a880-698514419707" name="Default Changelist" comment="" />
+      <created>1614949385820</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1614949385820</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
