@@ -868,7 +868,7 @@ public class ActionSender {
 	public static void sendElixirTimer(Player player, int seconds) {
 		com.legacy.server.net.PacketBuilder s = new com.legacy.server.net.PacketBuilder();
 		s.setID(Opcode.SEND_ELIXIR.opcode);
-		s.writeShort((int) (((double) seconds / 32D) * 50));
+		s.writeInt(seconds);
 		player.write(s.toPacket());
 	}
 
@@ -948,9 +948,7 @@ public class ActionSender {
 				if (timeTillShutdown > -1)
 					startShutdown(p, (int) (timeTillShutdown / 1000));
 
-				int elixir = p.getElixir();
-				if(elixir > -1)
-					sendElixirTimer(p, p.getElixir());
+				sendElixirTimer(p, GameStateUpdater.getElixerTime());
 
 				sendPlayerOnTutorial(p);
 				if (p.getLastLogin() == 0L) {

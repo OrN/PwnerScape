@@ -1,10 +1,19 @@
 package com.legacy.server;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayDeque;
 import java.util.Iterator;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import com.legacy.server.model.Cache;
+import com.legacy.server.sql.DatabaseConnection;
+import com.legacy.server.sql.DatabasePlayerLoader;
+import com.legacy.server.sql.query.Query;
+import com.legacy.server.sql.query.logs.EventLog;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -48,7 +57,156 @@ public final class GameStateUpdater {
 	private final EntityList<Player> players = World.getWorld().getPlayers();
 	private final EntityList<Npc> npcs = World.getWorld().getNpcs();
 
+	private static DatabaseConnection conn;
+	private static final Cache serverCache = new Cache();
+	private static long autoSaveTime = 0;
+	private static long elixirXPTime = -1;
+	private static long addElixerTime = 0;
+	private static final int AUTOSAVE_TIME = 60 * 1000;
+
+	public static void Init() {
+		conn = new DatabaseConnection("ServerLoader");
+		loadServerCache();
+
+		autoSaveTime = System.currentTimeMillis() + AUTOSAVE_TIME;
+	}
+
+	public static boolean isElixerXP() {
+		return (elixirXPTime != -1);
+	}
+
+	public static void addElixerTime(int seconds) {
+		addElixerTime += seconds * 1000;
+	}
+
+	public static int getElixerTime() {
+		if (elixirXPTime == -1)
+			return 0;
+
+		long currentTime = System.currentTimeMillis();
+		return (int)((elixirXPTime - currentTime) / 1000);
+	}
+
+	private static void loadServerCache() {
+		try {
+			PreparedStatement statement = conn.prepareStatement("SELECT * FROM `" + Constants.GameServer.MYSQL_TABLE_PREFIX + "server_cache`");
+			ResultSet result = statement.executeQuery();
+			while (result.next()) {
+				int identifier = result.getInt("type");
+				String key = result.getString("key");
+				if (identifier == 0) {
+					serverCache.put(key, result.getInt("value"));
+				}
+				if (identifier == 1) {
+					serverCache.put(key, result.getString("value"));
+				}
+				if (identifier == 2) {
+					serverCache.put(key, result.getBoolean("value"));
+				}
+				if (identifier == 3) {
+					serverCache.put(key, result.getLong("value"));
+				}
+			}
+
+			// Setup defaults
+			if (!serverCache.hasKey("double_xp_timer"))
+				serverCache.store("double_xp_timer", 0);
+
+			long currentTime = System.currentTimeMillis();
+			long double_xp_timer = serverCache.getLong("double_xp_timer");
+			if (double_xp_timer > 0)
+				elixirXPTime = currentTime + double_xp_timer;
+		} catch (Exception e) { e.printStackTrace(); }
+	}
+
+	private static void saveServerCache() {
+		long currentTime = System.currentTimeMillis();
+
+		try {
+			if (serverCache.getCacheMap().size() > 0) {
+				PreparedStatement statement = conn.prepareStatement("INSERT INTO `" + Constants.GameServer.MYSQL_TABLE_PREFIX + "server_cache` (`type`, `key`, `value`) VALUES(?,?,?)");
+				statement.addBatch("TRUNCATE TABLE `" + Constants.GameServer.MYSQL_TABLE_PREFIX  + "server_cache`");
+
+				// Calculate remaining double xp time
+				long xpTime = elixirXPTime;
+				if (xpTime == -1)
+						xpTime = currentTime;
+
+				serverCache.store("double_xp_timer", xpTime - currentTime);
+
+				for (String key : serverCache.getCacheMap().keySet()) {
+					Object o = serverCache.getCacheMap().get(key);
+					if (o instanceof Integer) {
+						statement.setInt(1, 0);
+						statement.setString(2, key);
+						statement.setInt(3, (Integer) o);
+						statement.addBatch();
+					}
+					if (o instanceof String) {
+						statement.setInt(1, 1);
+						statement.setString(2, key);
+						statement.setString(3, (String) o);
+						statement.addBatch();
+
+					}
+					if (o instanceof Boolean) {
+						statement.setInt(1, 2);
+						statement.setString(2, key);
+						statement.setInt(3, ((Boolean) o) ? 1 : 0);
+						statement.addBatch();
+					}
+					if (o instanceof Long) {
+						statement.setInt(1, 3);
+						statement.setString(2, key);
+						statement.setLong(3, ((Long) o));
+						statement.addBatch();
+					}
+				}
+
+				statement.executeBatch();
+			}
+		} catch (Exception e) { e.printStackTrace(); }
+	}
+
+	private void processServerState() {
+		// Check autosave timer, and autosave
+		long currentTime = System.currentTimeMillis();
+		if (currentTime >= autoSaveTime) {
+			LOGGER.info("Starting autosave...");
+
+			saveServerCache();
+			for (Player p : players)
+				p.save();
+			autoSaveTime = currentTime + AUTOSAVE_TIME;
+		}
+
+		// Add Elixer time
+		if (addElixerTime > 0) {
+			if (elixirXPTime == -1)
+				elixirXPTime = currentTime;
+
+			elixirXPTime += addElixerTime;
+			addElixerTime = 0;
+
+			saveServerCache();
+			for (Player p : players)
+				ActionSender.sendElixirTimer(p, getElixerTime());
+		}
+
+		// If elixer time has ran out, update accordingly
+		if (elixirXPTime != -1) {
+			if (currentTime >= elixirXPTime) {
+				elixirXPTime = -1;
+				for (Player p : players)
+					ActionSender.sendElixirTimer(p, 0);
+				World.getWorld().sendWorldMessage("@mag@2X EXP@yel@ has ended!");
+				serverCache.store("double_xp_timer", 0);
+			}
+		}
+	}
+
 	public void doUpdates() throws Exception {
+		processServerState();
 		processPlayers();
 		processNpcs();
 		processMessageQueues();

@@ -130,6 +130,9 @@ public final class Server implements Runnable {
 			LOGGER.info("Starting database loader...");
 			playerDataProcessor.start();
 			LOGGER.info("\t Database Loader Completed");
+
+			// Initialize game state updater
+			GameStateUpdater.Init();
 			
 			//ResourceLeakDetector.setLevel(ResourceLeakDetector.Level.PARANOID);
 			final EventLoopGroup bossGroup = new NioEventLoopGroup();

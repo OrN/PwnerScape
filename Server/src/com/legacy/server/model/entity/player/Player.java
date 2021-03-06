@@ -14,6 +14,7 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicReference;
 
+import com.legacy.server.GameStateUpdater;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -1093,14 +1094,8 @@ public final class Player extends Mob {
 		/**
 		 * Experience Elixir
 		 **/
-		if(getCache().hasKey("elixir_time")) {
-			if (getElixir() <= 0) {
-				getCache().remove("elixir_time");
-				ActionSender.sendElixirTimer(this, 0);
-			} else {
-				multiplier += 1.0;
-			}
-		}
+		if(GameStateUpdater.isElixerXP())
+			multiplier *= 2.0;
 
 		return multiplier;
 	}
@@ -1966,27 +1961,6 @@ public final class Player extends Mob {
 
 	public void setPremiumExpires(long long1) {
 		this.premiumSubscriptionExpires = long1;
-	}
-	public int getElixir() {
-		if (getCache().hasKey("elixir_time")) {
-			int now = (int) (System.currentTimeMillis() / 1000);
-			int time = ((int) getCache().getLong("elixir_time") - now);
-			return (time < 0) ? 0 : time;
-		}
-		return 0;
-	}
-	public void addElixir(int seconds) {
-		long elixirTime = seconds;
-		long now = System.currentTimeMillis() / 1000;
-		long experience = (now + elixirTime);
-		getCache().store("elixir_time", experience);
-	}
-
-	public void removeElixir() {
-		if(getCache().hasKey("elixir_time"))
-			getCache().remove("elixir_time");
-
-		ActionSender.sendElixirTimer(this, 0);
 	}
 
 	public int getGlobalBlock() {

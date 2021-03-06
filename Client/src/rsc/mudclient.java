@@ -803,7 +803,7 @@ public final class mudclient implements Runnable {
 		private int statFatigue = 0;
 		private MudClientGraphics surface;
 		private int systemUpdate = 0;
-		private int elixirTimer = 0;
+		private long elixirTimer = -1;
 		private boolean inWild = false;
 		private int teleportBubbleCount = 0;
 		private final int[] teleportBubbleTime = new int[50];
@@ -3988,31 +3988,22 @@ public final class mudclient implements Runnable {
 										this.getGameHeight() - 7);
 							}
 						}
-						if (this.elixirTimer != 0) {
-							centerX = this.elixirTimer / 50;
-							centerZ = centerX / 60;
-							centerX %= 60;
-							if(inWild) {
-								if (centerX < 10) {
-									this.getSurface().drawColoredStringCentered(this.getGameWidth() - 53,
-											"EXP Elixir: " + centerZ + ":0" + centerX, 0x9139e7, 0, 0,
+						if (elixirTimer != -1) {
+							long elixerSeconds = (this.elixirTimer - System.currentTimeMillis()) / 1000;
+							if (elixerSeconds > 0) {
+								centerX = (int) (elixerSeconds % 60);
+								centerZ = (int) ((elixerSeconds / 60) % 60);
+								int elixerHour = (int) (elixerSeconds / 60 / 60);
+								if (inWild) {
+									this.getSurface().drawColoredStringCentered(this.getGameWidth() - 64,
+											"2X EXP: " + elixerHour + "h " + centerZ + "m " + centerX + "s", 0xFF00F5, 0, 0,
 											this.getGameHeight() - 62);
-								} else {
-									this.getSurface().drawColoredStringCentered(this.getGameWidth() - 53,
-											"EXP Elixir: " + centerZ + ":" + centerX, 0x9139e7, 0, 0,
-											this.getGameHeight() - 62);
-								}
-							} else if(!inWild) {
-								if (centerX < 10) {
-									this.getSurface().drawColoredStringCentered(this.getGameWidth() - 53,
-											"EXP Elixir: " + centerZ + ":0" + centerX, 0x9139e7, 0, 1,
-											this.getGameHeight() - 7);
-								} else {
-									this.getSurface().drawColoredStringCentered(this.getGameWidth() - 53,
-											"EXP Elixir: " + centerZ + ":" + centerX, 0x9139e7, 0, 1,
+								} else if (!inWild) {
+									this.getSurface().drawColoredStringCentered(this.getGameWidth() - 64,
+											"2X EXP: " + elixerHour + "h " + centerZ + "m " + centerX + "s", 0xFF00F5, 0, 1,
 											this.getGameHeight() - 7);
 								}
-							} 
+							}
 						}
 						if(Config.KILL_FEED) {
 							killQueue.clean();
@@ -8043,12 +8034,6 @@ public final class mudclient implements Runnable {
 				if (this.systemUpdate > 1) {
 					--this.systemUpdate;
 				}
-				if (this.elixirTimer > 1) {
-					--this.elixirTimer;
-					if(this.elixirTimer <= 1) {
-						this.elixirTimer = 0;
-					}
-				}
 				this.checkConnection();
 				if (this.logoutTimeout > 0) {
 					--this.logoutTimeout;
@@ -10823,8 +10808,14 @@ public final class mudclient implements Runnable {
 																				return;
 																			}
 																			if (opcode == 54) {
-																				this.elixirTimer = this.packetsIncoming
-																						.getShort() * 32;
+																				long incAmount = this.packetsIncoming.get32() * 1000;
+																				if (incAmount != 0) {
+																					this.elixirTimer = System.currentTimeMillis() + incAmount;
+																					if (this.elixirTimer == -1)
+																						this.elixirTimer -= 1;
+																				} else {
+																					this.elixirTimer = -1;
+																				}
 																				return;
 																			}
 
@@ -11649,7 +11640,7 @@ public final class mudclient implements Runnable {
 				this.currentViewMode = GameMode.LOGIN;
 				
 				this.systemUpdate = 0;
-				this.elixirTimer = 0;
+				this.elixirTimer = -1;
 			} catch (RuntimeException var3) {
 				throw GenUtil.makeThrowable(var3, "client.FC(" + "dummy" + ')');
 			}
@@ -12277,7 +12268,7 @@ public final class mudclient implements Runnable {
 			try {
 				
 				this.systemUpdate = 0;
-				this.elixirTimer = 0;
+				this.elixirTimer = -1;
 				if (var1 <= 59) {
 					this.drawDialogOptionsMenu(-85);
 				}
@@ -12501,7 +12492,7 @@ public final class mudclient implements Runnable {
 		private final void resetGame(int var1) {
 			try {
 				this.systemUpdate = 0;
-				this.elixirTimer = 0;
+				this.elixirTimer = -1;
 				this.loginScreenNumber = 0;
 				this.logoutTimeout = 0;
 				

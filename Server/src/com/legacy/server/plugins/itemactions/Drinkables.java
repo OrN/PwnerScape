@@ -7,12 +7,17 @@ import static com.legacy.server.plugins.Functions.showBubble;
 import static com.legacy.server.plugins.Functions.showMenu;
 import static com.legacy.server.plugins.Functions.sleep;
 
+import com.legacy.server.GameStateUpdater;
 import com.legacy.server.model.container.Item;
 import com.legacy.server.model.entity.player.Player;
 import com.legacy.server.model.entity.update.Bubble;
+import com.legacy.server.model.world.World;
 import com.legacy.server.net.rsc.ActionSender;
 import com.legacy.server.plugins.listeners.action.InvActionListener;
 import com.legacy.server.plugins.listeners.executive.InvActionExecutiveListener;
+import com.legacy.server.sql.GameLogging;
+import com.legacy.server.sql.query.logs.EventLog;
+import com.legacy.server.sql.query.logs.LiveFeedLog;
 import com.legacy.server.util.rsc.DataConversions;
 import com.legacy.server.util.rsc.MessageType;
 
@@ -29,23 +34,22 @@ public class Drinkables implements InvActionListener, InvActionExecutiveListener
 			return;
 		}
 		player.setConsumeTimer(1200);
-		if (!player.getLocation().inWilderness()) {
-			player.getUpdateFlags().setActionBubble(new Bubble(player, item.getID()));
-		}
 		switch (item.getID()) {
-		case 2106:
-			if(player.getCache().hasKey("elixir_time") && player.getElixir() > 0) {
-				player.message("You can't drink more of this elixir, you need to wait till your active time has ended");
-				return;
+		case 2106: {
+			final int incHours = 1;
+			final int incAmount = (incHours * 60) * 60;
+			if (GameStateUpdater.getElixerTime() <= 172800 - incAmount) {
+				player.message("You drink the experience elixir");
+				player.getInventory().remove(item.getID(), 1);
+				player.save();
+				GameStateUpdater.addElixerTime(incAmount); // 1 Hour
+				World.getWorld().sendWorldMessage("@yel@Someone drank an @whi@Experience Elixer@yel@ and added 1 hour of @mag@2X EXP@yel@!");
+			} else {
+				player.message("You can't drink an experience elixir right now");
+				player.setConsumeTimer(0);
 			}
-			player.message("You drink the mysterious elixir");
-			showBubble(player, item);
-			player.getInventory().remove(item.getID(), 1);
-			player.addElixir(7200);
-			ActionSender.sendElixirTimer(player, player.getElixir());
-			sleep(1200);
-			player.message("it has a strange taste");
 			break;
+		}
 		case 1253:
 			player.message("Are you sure you want to drink this?");
 			int drink = showMenu(player,

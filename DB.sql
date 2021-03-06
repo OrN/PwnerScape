@@ -158,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `hof_entrys` (
   `username` varchar(12) DEFAULT NULL,
   `time` varchar(8) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -187,7 +187,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `commented` int(10) NOT NULL,
   `showed` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -235,7 +235,7 @@ CREATE TABLE IF NOT EXISTS `rscl_achievement_reward` (
   `guaranteed` int(10) NOT NULL,
   `reward_type` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -251,7 +251,7 @@ CREATE TABLE IF NOT EXISTS `rscl_achievement_status` (
   `status` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `unlocked` int(10) UNSIGNED NOT NULL DEFAULT '0',
   PRIMARY KEY (`dbid`)
-) ENGINE=MyISAM AUTO_INCREMENT=799 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- --------------------------------------------------------
 
@@ -267,7 +267,7 @@ CREATE TABLE IF NOT EXISTS `rscl_achievement_task` (
   `do_amount` int(10) NOT NULL,
   `id` int(10) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -293,7 +293,7 @@ CREATE TABLE IF NOT EXISTS `rscl_auctions` (
   KEY `itemID` (`itemID`),
   KEY `seller_username_2` (`seller_username`),
   KEY `time` (`time`)
-) ENGINE=MyISAM AUTO_INCREMENT=93 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -309,7 +309,7 @@ CREATE TABLE IF NOT EXISTS `rscl_bank` (
   `slot` int(5) UNSIGNED NOT NULL DEFAULT '0',
   `dbid` int(10) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`dbid`)
-) ENGINE=InnoDB AUTO_INCREMENT=991885 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -326,7 +326,7 @@ CREATE TABLE IF NOT EXISTS `rscl_chat_logs` (
   PRIMARY KEY (`id`),
   KEY `time` (`time`),
   KEY `sender` (`sender`)
-) ENGINE=MyISAM AUTO_INCREMENT=750 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -348,7 +348,7 @@ CREATE TABLE IF NOT EXISTS `rscl_clan` (
   `clan_points` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `bank_size` mediumint(5) UNSIGNED NOT NULL DEFAULT '10',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -365,7 +365,7 @@ CREATE TABLE IF NOT EXISTS `rscl_clan_players` (
   `kills` mediumint(5) UNSIGNED NOT NULL DEFAULT '0',
   `deaths` mediumint(5) UNSIGNED NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -397,7 +397,7 @@ CREATE TABLE IF NOT EXISTS `rscl_curstats` (
   `cur_thieving` tinyint(3) UNSIGNED NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `playerID` (`playerID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2041 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -429,7 +429,7 @@ CREATE TABLE IF NOT EXISTS `rscl_experience` (
   `exp_thieving` int(9) UNSIGNED NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `playerID` (`playerID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2041 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -448,7 +448,7 @@ CREATE TABLE IF NOT EXISTS `rscl_expired_auctions` (
   `claimed` tinyint(1) NOT NULL DEFAULT '0',
   `explanation` varchar(255) NOT NULL DEFAULT ' ',
   PRIMARY KEY (`claim_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=104 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -464,7 +464,7 @@ CREATE TABLE IF NOT EXISTS `rscl_friends` (
   `dbid` int(10) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`dbid`),
   KEY `friend` (`friend`)
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -485,7 +485,7 @@ CREATE TABLE IF NOT EXISTS `rscl_game_reports` (
   `reported_x` int(5) NOT NULL DEFAULT '0',
   `reported_y` int(5) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=110 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -501,7 +501,7 @@ CREATE TABLE IF NOT EXISTS `rscl_generic_logs` (
   PRIMARY KEY (`id`),
   KEY `id` (`id`),
   KEY `time` (`time`)
-) ENGINE=MyISAM AUTO_INCREMENT=4160 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -514,7 +514,7 @@ CREATE TABLE IF NOT EXISTS `rscl_giveaway` (
   `next_giveaway` varchar(20) NOT NULL,
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -1508,7 +1508,7 @@ CREATE TABLE IF NOT EXISTS `rscl_invitems` (
   `slot` int(5) UNSIGNED NOT NULL,
   `dbid` int(10) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`dbid`)
-) ENGINE=InnoDB AUTO_INCREMENT=629963 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -3828,7 +3828,7 @@ CREATE TABLE IF NOT EXISTS `rscl_live_feeds` (
   `message` varchar(165) NOT NULL,
   `time` int(10) UNSIGNED NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=372 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -3844,7 +3844,7 @@ CREATE TABLE IF NOT EXISTS `rscl_logins` (
   `dbid` int(10) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`dbid`),
   KEY `ip` (`ip`)
-) ENGINE=MyISAM AUTO_INCREMENT=6945 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -3861,7 +3861,7 @@ CREATE TABLE IF NOT EXISTS `rscl_name_changes` (
   `new_name` varchar(12) NOT NULL,
   `date` int(10) UNSIGNED NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -38956,7 +38956,7 @@ CREATE TABLE IF NOT EXISTS `rscl_orders` (
   `time` int(11) DEFAULT NULL,
   PRIMARY KEY (`order_id`),
   UNIQUE KEY `txn_id` (`txn_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -39019,7 +39019,7 @@ CREATE TABLE IF NOT EXISTS `rscl_players` (
   KEY `group_id` (`group_id`),
   KEY `highscoreopt` (`highscoreopt`),
   KEY `banned` (`banned`)
-) ENGINE=InnoDB AUTO_INCREMENT=2044 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -39035,7 +39035,7 @@ CREATE TABLE IF NOT EXISTS `rscl_player_cache` (
   `value` varchar(13) NOT NULL,
   `dbid` int(10) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`dbid`)
-) ENGINE=MyISAM AUTO_INCREMENT=121720 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -39054,7 +39054,7 @@ CREATE TABLE IF NOT EXISTS `rscl_private_message_logs` (
   KEY `reciever` (`reciever`),
   KEY `time` (`time`),
   KEY `sender` (`sender`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -39069,7 +39069,7 @@ CREATE TABLE IF NOT EXISTS `rscl_quests` (
   `id` int(10) DEFAULT NULL,
   `stage` int(10) DEFAULT NULL,
   PRIMARY KEY (`dbid`)
-) ENGINE=InnoDB AUTO_INCREMENT=1367229 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -39092,7 +39092,7 @@ CREATE TABLE IF NOT EXISTS `rscl_staff_logs` (
   `affected_ip` varchar(15) DEFAULT '0.0.0.0',
   `extra` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2025 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -39116,7 +39116,7 @@ CREATE TABLE IF NOT EXISTS `rscl_trade_logs` (
   KEY `player1_ip` (`player1_ip`),
   KEY `player2_ip` (`player2_ip`),
   KEY `time` (`time`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -39160,7 +39160,7 @@ CREATE TABLE IF NOT EXISTS `search_words` (
   `word` varchar(20) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   PRIMARY KEY (`word`),
   KEY `search_words_id_idx` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=192 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -39210,7 +39210,7 @@ CREATE TABLE IF NOT EXISTS `shop_logs` (
   `forum_name` varchar(12) NOT NULL,
   `game_name` varchar(12) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -39274,7 +39274,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_username_idx` (`username`(25)),
   KEY `users_registered_idx` (`registered`)
-) ENGINE=MyISAM AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 --
 -- Index för tabell `rscl_auctions`
@@ -39305,3 +39305,18 @@ ALTER TABLE `rscl_private_message_logs` ADD FULLTEXT KEY `message` (`message`);
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rscl_server_cache`
+--
+
+DROP TABLE IF EXISTS `rscl_server_cache`;
+CREATE TABLE IF NOT EXISTS `rscl_server_cache` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` tinyint(1) NOT NULL,
+  `key` varchar(32) NOT NULL,
+  `value` varchar(32) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

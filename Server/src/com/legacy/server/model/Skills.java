@@ -154,9 +154,9 @@ public class Skills {
 	public void addExperience(int skill, double exp) {
 		int oldLevel = getMaxStat(skill);
 		exps[skill] += exp;
-		if (exps[skill] > MAXIMUM_EXP) {
+		if (exps[skill] > MAXIMUM_EXP || exps[skill] < 0)
 			exps[skill] = MAXIMUM_EXP;
-		}
+
 		int newLevel = getMaxStat(skill);
 		int levelDiff = newLevel - oldLevel;
 
@@ -174,7 +174,7 @@ public class Skills {
 				}
 				player.message("@gre@You just advanced " + levelDiff + " " + SKILL_NAME[skill] + " level"
 						+ (levelDiff > 1 ? "s" : "") + "!");
-				ActionSender.sendSound((Player) mob, "advance");
+				ActionSender.sendSound((Player)mob, "advance");
 			}
 
 			mob.getUpdateFlags().setAppearanceChanged(true);

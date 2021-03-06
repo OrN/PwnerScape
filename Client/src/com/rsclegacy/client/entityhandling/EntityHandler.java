@@ -814,6 +814,9 @@ public class EntityHandler {
 	}
 
 	private static void loadNpcDefinitionsCustom() {
+		int[] sprites = null;
+		int i = npcs.size() - 1;
+		sprites = new int[] { 0, 1, 2, -1, -1, -1, -1, -1, 46, -1, -1, -1 };
 		npcs.add(new NPCDef("Auctioneer", "He gives access to auction house", "Auction", 0, 0, 3, 0, false, sprites, 16761440, 2, 8409120, 13415270, 145, 230, 6, 6, 5, i++));
 		sprites = new int[] { 3, 4, 2, -1, -1, -1, -1, -1, -1, 11, -1, -1 };
 		npcs.add(new NPCDef("Auction Clerk", "There to help me make my auctions", "Auction", "Teleport", 15, 16, 12, 18, false, sprites, 11167296, 11141375, 11141375, 14415270, 145, 220, 6, 6, 5, i++));
@@ -1931,7 +1934,6 @@ public class EntityHandler {
 		npcs.add(new NPCDef("Gundai","He must get lonely out here", "Bank", "Collect", 15, 16, 12, 18, false, sprites, 11167296, 8409120, 3, 13415270, 145, 230, 6, 6, 5, i++));
 		sprites = new int[] { 6, 1, 2, -1, -1, -1, -1, -1, 46, -1, -1, -1 };
 		npcs.add(new NPCDef("Lundail","He sells rune stones", "", 15, 16, 12, 18, false, sprites, 11167296, 8409120, 3, 13415270, 145, 230, 6, 6, 5, i++));
-		sprites = new int[] { 0, 1, 2, -1, -1, -1, -1, -1, 46, -1, -1, -1 };
 	}
 
 	private static void loadItemDefinitions() {

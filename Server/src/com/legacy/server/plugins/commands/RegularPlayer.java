@@ -1,6 +1,7 @@
 package com.legacy.server.plugins.commands;
 
 import com.legacy.server.Constants;
+import com.legacy.server.GameStateUpdater;
 import com.legacy.server.content.clan.ClanInvite;
 import com.legacy.server.model.entity.player.Player;
 import com.legacy.server.model.snapshot.Chatlog;
@@ -125,7 +126,7 @@ public final class RegularPlayer implements CommandListener {
 			+ "@gre@Attack, Strength, Defense, Hits:@whi@ " + player.getExperienceRate(0) + "x %"
 			+ "@gre@Prayer, Magic, Ranged:@whi@ " + player.getExperienceRate(4) + "x %"
 			+ "@gre@Skill XP Rate:@whi@ " + player.getExperienceRate(11) + "x %"
-			+ "@gre@Experience Elixir:@whi@ " + (player.getCache().hasKey("elixir_time") && player.getElixir() > 0 ? DataConversions.getDateFromMsec(player.getElixir() * 1000) : "--") + " %"
+			+ "@gre@Experience Elixir:@whi@ " + (GameStateUpdater.getElixerTime() > 0 ? DataConversions.getDateFromMsec(GameStateUpdater.getElixerTime() * 1000) : "--") + " %"
 			+ "@gre@Double Experience: " + (Constants.GameServer.IS_DOUBLE_EXP ? "@whi@ACTIVE!! %" : "@whi@-- % %"), true);
 			return;
 		}
