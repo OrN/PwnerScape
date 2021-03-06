@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="9d4210e2-34e7-4353-a880-698514419707" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DB.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../DB.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/Landscape.rscd" beforeDir="false" afterPath="$PROJECT_DIR$/cache/Landscape.rscd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/rsclegacy/client/entityhandling/EntityHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/rsclegacy/client/entityhandling/EntityHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/conf/server/data/P2PLandscape.rscd" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/conf/server/data/P2PLandscape.rscd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/members.conf" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/members.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/src/com/legacy/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/src/com/legacy/server/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

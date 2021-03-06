@@ -791,7 +791,7 @@ public class EntityHandler {
 		npcs.add(new NPCDef("Achetties","One of Asgarnia's greatest heros", "", 45, 50, 42, 48, false, sprites, 1, 2, 3, 15523536, 145, 220, 6, 6, 5, i++));
 		sprites = new int[] { 7, 4, 44, 100, 118, -1, -1, -1, 155, -1, -1, 64 };
 		npcs.add(new NPCDef("Ice queen","The leader of the ice warriors", "", 105, 101, 104, 104, true, sprites, 6724027, 8425710, 8425710, 5623807, 150, 250, 6, 6, 5, i++));
-		//loadNpcDefinitionsB();
+		//loadNpcDefinitionsCustom();
 		//`sprites1`='" + npc.sprites[0] + "',`sprites2`='" + npc.sprites[1] + "',`sprites3`='" + npc.sprites[2] + "',`sprites4`='" + npc.sprites[3] + "',`sprites5`='" + npc.sprites[4] + "',`sprites6`='" + npc.sprites[5] + "',`sprites7`='" + npc.sprites[6] + "',`sprites8`='" + npc.sprites[7] + "',`sprites9`='" + npc.sprites[8] + "',`sprites10`='" + npc.sprites[9] + "',`sprites11`='" + npc.sprites[10] + "',`sprites12`='" + npc.sprites[11] + "'
 		/*try {
 			PrintWriter printWriter = new PrintWriter(new FileOutputStream("newNpcDef.txt"), true);
@@ -812,8 +812,43 @@ public class EntityHandler {
 			e.printStackTrace();
 		}*/
 	}
-	
 
+	private static void loadNpcDefinitionsCustom() {
+		npcs.add(new NPCDef("Auctioneer", "He gives access to auction house", "Auction", 0, 0, 3, 0, false, sprites, 16761440, 2, 8409120, 13415270, 145, 230, 6, 6, 5, i++));
+		sprites = new int[] { 3, 4, 2, -1, -1, -1, -1, -1, -1, 11, -1, -1 };
+		npcs.add(new NPCDef("Auction Clerk", "There to help me make my auctions", "Auction", "Teleport", 15, 16, 12, 18, false, sprites, 11167296, 11141375, 11141375, 14415270, 145, 220, 6, 6, 5, i++));
+		sprites = new int[] { 3, 4, 2, -1, -1, 77, -1, -1, -1, -1, -1, -1 };
+		npcs.add(new NPCDef("Subscription Vendor", "Exchange your subscription token to subscription time", "", 0, 0, 3, 0, false, sprites, 16711680, 143190, 143190,15523536, 145, 220, 6, 6, 5, i++));
+		sprites = new int[] { 0, 1, 2, -1, -1, 77, -1, -1, -1, -1, -1, -1 };
+		npcs.add(new NPCDef("Subscription Vendor", "Exchange your subscription token to subscription time", "", 0, 0, 3, 0, false, sprites, 16761440, 143190, 143190,15523536, 145, 230, 6, 6, 5, i++));
+		sprites = new int[] { 241, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
+		npcs.add(new NPCDef("Gaia","The earth queen with a rotten heart", "", 78, 79, 79, 80, true, sprites, 0, 0, 0, 0, 275, 262, 11, 11, 30, i++));
+		sprites = new int[] { 0, 245, 246, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
+		npcs.add(new NPCDef("Iron Man","An Iron Man", "Armour", 0, 0, 0, 0, false, sprites, 6751590, 0, 14, 13415270, 145, 220, 6, 6, 5, i++));
+		sprites = new int[] { 0, 248, 249, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
+		npcs.add(new NPCDef("Ultimate Iron Man","An Ultimate Iron Man", "Armour", 0, 0, 0, 0, false, sprites, 11167296, 8, 14, 13415270, 145, 220, 6, 6, 5, i++));
+		sprites = new int[] { 250, 251, 252, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
+		npcs.add(new NPCDef("Hardcore Iron Man","A Hardcore Iron Man", "Armour", 0, 0, 0, 0, false, sprites, 11167296, 8, 14, 13415270, 145, 220, 6, 6, 5, i++));
+		sprites = new int[] { 309, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
+		npcs.add(new NPCDef("Greatwood","A scary hard slamming tree", "", 255, 245, 400, 300, true, sprites, 0, 0, 0, 0, 345, 410, 11, 11, 30, i++));
+
+		/*try {
+			PrintWriter printWriter = new PrintWriter(new FileOutputStream("NpcType.txt"), true);
+			int count = 0;
+			for(NPCDef npc : npcs) {
+				//printWriter.println("UPDATE `rsck_npcdef` SET `name`='" + npc.getName().replace("'", "''") + "',`description`='" + npc.getDescription().replace("'", "''") + "', " + (npc.getCommand().isEmpty() ? "" : "`command`='" + npc.getCommand() + "',") + "`attack`='" + npc.getAtt() + "',`strength`='" + npc.getStr() + "',`hits`='" + npc.getHits() + "',`defense`='" + npc.getDef() + "',`combatlvl`='" + npcCombat + "',`attackable`=" + (npc.isAttackable() ? "'1'" : "'0'") + ", `sprites1`='" + npc.sprites[0] + "',`sprites2`='" + npc.sprites[1] + "',`sprites3`='" + npc.sprites[2] + "',`sprites4`='" + npc.sprites[3] + "',`sprites5`='" + npc.sprites[4] + "',`sprites6`='" + npc.sprites[5] + "',`sprites7`='" + npc.sprites[6] + "',`sprites8`='" + npc.sprites[7] + "',`sprites9`='" + npc.sprites[8] + "',`sprites10`='" + npc.sprites[9] + "',`sprites11`='" + npc.sprites[10] + "',`sprites12`='" + npc.sprites[11] + "', `hairColour`='" + npc.getHairColour() + "',`topColour`='" + npc.getTopColour() + "', `bottomColour`='" + npc.bottomColour + "',`skinColour`='" + npc.getSkinColour() + "',`camera1`='" + npc.getCamera1() + "',`camera2`='" + npc.getCamera2() + "',`walkModel`='" + npc.getWalkModel() + "',`combatModel`='" + npc.getCombatModel() + "',`combatSprite`='" + npc.getCombatSprite() + "' WHERE `id`='" + count + "';");
+				printWriter.println("NPC: " + npc.getName() + " | ID: " + count);
+				printWriter.flush();
+				printWriter.println("UPDATE `rscl_npcdef` SET `isMembers`='?' WHERE `id`='" + count + "';");
+				printWriter.flush();
+				count++;
+			}
+			printWriter.close();
+			System.out.println("NPCS TOTAL: " + count);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}*/
+	}
 
 	private static void loadNpcDefinitionsB() {
 		int[] sprites;
@@ -1897,40 +1932,6 @@ public class EntityHandler {
 		sprites = new int[] { 6, 1, 2, -1, -1, -1, -1, -1, 46, -1, -1, -1 };
 		npcs.add(new NPCDef("Lundail","He sells rune stones", "", 15, 16, 12, 18, false, sprites, 11167296, 8409120, 3, 13415270, 145, 230, 6, 6, 5, i++));
 		sprites = new int[] { 0, 1, 2, -1, -1, -1, -1, -1, 46, -1, -1, -1 };
-		npcs.add(new NPCDef("Auctioneer", "He gives access to auction house", "Auction", 0, 0, 3, 0, false, sprites, 16761440, 2, 8409120, 13415270, 145, 230, 6, 6, 5, i++));
-		sprites = new int[] { 3, 4, 2, -1, -1, -1, -1, -1, -1, 11, -1, -1 };
-		npcs.add(new NPCDef("Auction Clerk", "There to help me make my auctions", "Auction", "Teleport", 15, 16, 12, 18, false, sprites, 11167296, 11141375, 11141375, 14415270, 145, 220, 6, 6, 5, i++));
-		sprites = new int[] { 3, 4, 2, -1, -1, 77, -1, -1, -1, -1, -1, -1 };
-		npcs.add(new NPCDef("Subscription Vendor", "Exchange your subscription token to subscription time", "", 0, 0, 3, 0, false, sprites, 16711680, 143190, 143190,15523536, 145, 220, 6, 6, 5, i++));
-		sprites = new int[] { 0, 1, 2, -1, -1, 77, -1, -1, -1, -1, -1, -1 };
-		npcs.add(new NPCDef("Subscription Vendor", "Exchange your subscription token to subscription time", "", 0, 0, 3, 0, false, sprites, 16761440, 143190, 143190,15523536, 145, 230, 6, 6, 5, i++));
-		sprites = new int[] { 241, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
-		npcs.add(new NPCDef("Gaia","The earth queen with a rotten heart", "", 78, 79, 79, 80, true, sprites, 0, 0, 0, 0, 275, 262, 11, 11, 30, i++));
-		sprites = new int[] { 0, 245, 246, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
-		npcs.add(new NPCDef("Iron Man","An Iron Man", "Armour", 0, 0, 0, 0, false, sprites, 6751590, 0, 14, 13415270, 145, 220, 6, 6, 5, i++));
-		sprites = new int[] { 0, 248, 249, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
-		npcs.add(new NPCDef("Ultimate Iron Man","An Ultimate Iron Man", "Armour", 0, 0, 0, 0, false, sprites, 11167296, 8, 14, 13415270, 145, 220, 6, 6, 5, i++));
-		sprites = new int[] { 250, 251, 252, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
-		npcs.add(new NPCDef("Hardcore Iron Man","A Hardcore Iron Man", "Armour", 0, 0, 0, 0, false, sprites, 11167296, 8, 14, 13415270, 145, 220, 6, 6, 5, i++));
-		sprites = new int[] { 309, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
-		npcs.add(new NPCDef("Greatwood","A scary hard slamming tree", "", 255, 245, 400, 300, true, sprites, 0, 0, 0, 0, 345, 410, 11, 11, 30, i++));
-		
-		/*try {
-			PrintWriter printWriter = new PrintWriter(new FileOutputStream("NpcType.txt"), true);
-			int count = 0;
-			for(NPCDef npc : npcs) {
-				//printWriter.println("UPDATE `rsck_npcdef` SET `name`='" + npc.getName().replace("'", "''") + "',`description`='" + npc.getDescription().replace("'", "''") + "', " + (npc.getCommand().isEmpty() ? "" : "`command`='" + npc.getCommand() + "',") + "`attack`='" + npc.getAtt() + "',`strength`='" + npc.getStr() + "',`hits`='" + npc.getHits() + "',`defense`='" + npc.getDef() + "',`combatlvl`='" + npcCombat + "',`attackable`=" + (npc.isAttackable() ? "'1'" : "'0'") + ", `sprites1`='" + npc.sprites[0] + "',`sprites2`='" + npc.sprites[1] + "',`sprites3`='" + npc.sprites[2] + "',`sprites4`='" + npc.sprites[3] + "',`sprites5`='" + npc.sprites[4] + "',`sprites6`='" + npc.sprites[5] + "',`sprites7`='" + npc.sprites[6] + "',`sprites8`='" + npc.sprites[7] + "',`sprites9`='" + npc.sprites[8] + "',`sprites10`='" + npc.sprites[9] + "',`sprites11`='" + npc.sprites[10] + "',`sprites12`='" + npc.sprites[11] + "', `hairColour`='" + npc.getHairColour() + "',`topColour`='" + npc.getTopColour() + "', `bottomColour`='" + npc.bottomColour + "',`skinColour`='" + npc.getSkinColour() + "',`camera1`='" + npc.getCamera1() + "',`camera2`='" + npc.getCamera2() + "',`walkModel`='" + npc.getWalkModel() + "',`combatModel`='" + npc.getCombatModel() + "',`combatSprite`='" + npc.getCombatSprite() + "' WHERE `id`='" + count + "';");
-				printWriter.println("NPC: " + npc.getName() + " | ID: " + count);
-				printWriter.flush();
-				printWriter.println("UPDATE `rscl_npcdef` SET `isMembers`='?' WHERE `id`='" + count + "';");
-				printWriter.flush();
-				count++;
-			}
-			printWriter.close();
-			System.out.println("NPCS TOTAL: " + count);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}*/
 	}
 
 	private static void loadItemDefinitions() {
@@ -6557,6 +6558,7 @@ public class EntityHandler {
 	public static void load(boolean loadMembers) {
 		loadNpcDefinitionsA();
 		loadNpcDefinitionsB();
+		loadNpcDefinitionsCustom();
 		loadItemDefinitions();
 		loadTextureDefinitions();
 		loadAnimationDefinitions();

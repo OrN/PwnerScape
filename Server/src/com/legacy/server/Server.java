@@ -74,7 +74,7 @@ public final class Server implements Runnable {
 		LOGGER.info("Launching RSCLegacy Game Server...");
 		if (args.length == 0) {
 			Constants.GameServer.initConfig("members.conf");
-			LOGGER.info("Server Configuration file not provided. Default: free.conf");
+			LOGGER.info("Server Configuration file not provided. Default: members.conf");
 		} else {
 			Constants.GameServer.initConfig(args[0]);
 			LOGGER.info("Server Configuration file: " + args[0]);
