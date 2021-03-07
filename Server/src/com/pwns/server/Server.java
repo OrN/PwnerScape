@@ -231,23 +231,28 @@ public final class Server implements Runnable {
 	}
 
 	public void run() {
-		for (Player p : World.getWorld().getPlayers()) {
+		for (Player p : World.getWorld().getPlayers())
 			p.processIncomingPackets();
-		}
+
 		getEventHandler().doEvents();
+
 		try {
-			if (System.currentTimeMillis() - lastClientUpdate >= Constants.GameServer.GAME_TICK) {
-				lastClientUpdate = System.currentTimeMillis();
+			long ticksPassed = TickTimer.getInstance().process();
+			if (ticksPassed > 0) {
 				tickEventHandler.doGameEvents();
 				gameUpdater.doUpdates();
+			}
+
+			if (ticksPassed > 1) {
+				long ticksLate = ticksPassed - 1;
+				LOGGER.warn("We are " + Long.toString(ticksLate) + " ticks late");
 			}
 		} catch (Exception e) {
 			LOGGER.catching(e);
 		}
 
-		for (Player p : World.getWorld().getPlayers()) {
+		for (Player p : World.getWorld().getPlayers())
 			p.sendOutgoingPackets();
-		}
 	}
 
 	public ServerEventHandler getEventHandler() {
@@ -263,6 +268,7 @@ public final class Server implements Runnable {
 	}
 
 	public void start() {
-		scheduledExecutor.scheduleAtFixedRate(this, 0, 50, TimeUnit.MILLISECONDS);
+		TickTimer.getInstance().start();
+		scheduledExecutor.scheduleAtFixedRate(this, 0, 10, TimeUnit.MILLISECONDS);
 	}
 }

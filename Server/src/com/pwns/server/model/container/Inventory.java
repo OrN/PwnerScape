@@ -463,6 +463,7 @@ public class Inventory {
 			player.playSound("click");
 		player.updateWornItems(item.getDef().getWieldPosition(), item.getDef().getAppearanceId());
 
+		// TODO: Don't send this for every weild
 		ActionSender.sendInventory(player);
 		ActionSender.sendEquipmentStats(player);
 	}

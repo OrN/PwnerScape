@@ -3,16 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="b94e2d56-591c-4b8d-aa31-3e5c2c8e66be" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/pwnerscape/interfaces/misc/BankInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pwnerscape/interfaces/misc/BankInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/pwnerscape/interfaces/misc/clan/ClanInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pwnerscape/interfaces/misc/clan/ClanInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rsc/enumerations/MenuItemAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rsc/enumerations/MenuItemAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rsc/mudclient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rsc/mudclient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/free.conf" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/free.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/members.conf" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/members.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/src/com/pwns/server/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/src/com/pwns/server/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/src/com/pwns/server/GameStateUpdater.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/src/com/pwns/server/GameStateUpdater.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Server/src/com/pwns/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/src/com/pwns/server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/src/com/pwns/server/model/entity/npc/NpcBehavior.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/src/com/pwns/server/model/entity/npc/NpcBehavior.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/src/com/pwns/server/model/container/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/src/com/pwns/server/model/container/Inventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/src/com/pwns/server/model/entity/Mob.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/src/com/pwns/server/model/entity/Mob.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Server/src/com/pwns/server/model/entity/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/src/com/pwns/server/model/entity/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/src/com/pwns/server/plugins/commands/RegularPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/src/com/pwns/server/plugins/commands/RegularPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/src/com/pwns/server/net/rsc/handlers/AttackHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/src/com/pwns/server/net/rsc/handlers/AttackHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/src/com/pwns/server/net/rsc/handlers/GameObjectAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/src/com/pwns/server/net/rsc/handlers/GameObjectAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/src/com/pwns/server/net/rsc/handlers/ItemDropHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/src/com/pwns/server/net/rsc/handlers/ItemDropHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/src/com/pwns/server/net/rsc/handlers/ItemWieldHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/src/com/pwns/server/net/rsc/handlers/ItemWieldHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +24,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1pNTw294u9qOFyhPjlZ31zjMKX8" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />

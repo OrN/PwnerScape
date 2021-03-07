@@ -221,8 +221,8 @@ public final class GameStateUpdater {
 
 	public void updateClients() {
 		for (Player p : players) {
-			sendUpdatePackets(p);
 			p.process();
+			sendUpdatePackets(p);
 		}
 	}
 
