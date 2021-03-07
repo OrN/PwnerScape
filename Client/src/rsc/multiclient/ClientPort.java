@@ -2,7 +2,7 @@ package rsc.multiclient;
 
 import java.io.ByteArrayInputStream;
 
-import com.rsclegacy.client.model.Sprite;
+import com.pwnerscape.client.model.Sprite;
 
 public interface ClientPort {
 

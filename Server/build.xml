@@ -41,7 +41,7 @@
 	</target>
 	
 	<target name="runserverfree">
-		<java classname="com.legacy.server.Server" fork="true">
+		<java classname="com.pwns.server.Server" fork="true">
 			<arg value="free.conf" />
 			<!--<jvmarg value="-Xms512M" />
 			<jvmarg value="-Xmx8140M" />-->
@@ -61,7 +61,7 @@
 	</target>
 	
 	<target name="runservermembers">
-		<java classname="com.legacy.server.Server" fork="true">
+		<java classname="com.pwns.server.Server" fork="true">
 			<arg value="members.conf" />
 			<jvmarg line="-XX:+AggressiveOpts -XX:+UseParallelGC -XX:+UseBiasedLocking -XX:NewSize=64m"/>
 			<classpath>

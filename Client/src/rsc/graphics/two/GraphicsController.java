@@ -6,12 +6,11 @@ import java.nio.ByteBuffer;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-import com.rsclegacy.client.data.DataConversions;
-import com.rsclegacy.client.model.Sprite;
+import com.pwnerscape.client.data.DataConversions;
+import com.pwnerscape.client.model.Sprite;
 
 import rsc.Config;
 import rsc.MiscFunctions;
-import rsc.mudclient;
 import rsc.util.FastMath;
 import rsc.util.GenUtil;
 

@@ -6,9 +6,9 @@ import java.nio.ByteBuffer;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-import com.rsclegacy.client.data.DataConversions;
-import com.rsclegacy.client.entityhandling.EntityHandler;
-import com.rsclegacy.client.model.Sector;
+import com.pwnerscape.client.data.DataConversions;
+import com.pwnerscape.client.entityhandling.EntityHandler;
+import com.pwnerscape.client.model.Sector;
 
 import rsc.Config;
 import rsc.graphics.two.GraphicsController;

@@ -5,6 +5,7 @@ import rsc.enumerations.RSCharacterDirection;
 public final class RSCharacter {
 	public String accountName;
 	RSCharacterDirection direction = RSCharacterDirection.NORTH;
+	public boolean pvp;
 	public int animationNext;
 	public int attackingNpcServerIndex = 0;
 	public int attackingPlayerServerIndex = 0;

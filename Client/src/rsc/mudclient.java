@@ -18,31 +18,31 @@ import java.util.Map.Entry;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.rsclegacy.client.data.DataFileDecrypter;
-import com.rsclegacy.client.data.DataOperations;
-import com.rsclegacy.client.entityhandling.EntityHandler;
-import com.rsclegacy.client.entityhandling.defs.ItemDef;
-import com.rsclegacy.client.entityhandling.defs.NPCDef;
-import com.rsclegacy.client.entityhandling.defs.SpellDef;
-import com.rsclegacy.client.entityhandling.defs.extras.AnimationDef;
-import com.rsclegacy.client.model.Sprite;
-import com.rsclegacy.interfaces.NComponent;
-import com.rsclegacy.interfaces.misc.AuctionHouse;
-import com.rsclegacy.interfaces.misc.BankInterface;
-import com.rsclegacy.interfaces.misc.BankPinInterface;
-import com.rsclegacy.interfaces.misc.FishingTrawlerInterface;
-import com.rsclegacy.interfaces.misc.IronManInterface;
-import com.rsclegacy.interfaces.misc.OnlineListInterface;
-import com.rsclegacy.interfaces.misc.ProgressBarInterface;
-import com.rsclegacy.interfaces.misc.QuestGuideInterface;
-import com.rsclegacy.interfaces.misc.SkillGuideInterface;
-import com.rsclegacy.interfaces.misc.ExperienceConfigInterface;
-import com.rsclegacy.interfaces.misc.DoSkillInterface;
-import com.rsclegacy.interfaces.misc.LostOnDeathInterface;
-import com.rsclegacy.interfaces.misc.TerritorySignupInterface;
-import com.rsclegacy.interfaces.misc.clan.Clan;
+import com.pwnerscape.client.data.DataFileDecrypter;
+import com.pwnerscape.client.data.DataOperations;
+import com.pwnerscape.client.entityhandling.EntityHandler;
+import com.pwnerscape.client.entityhandling.defs.ItemDef;
+import com.pwnerscape.client.entityhandling.defs.NPCDef;
+import com.pwnerscape.client.entityhandling.defs.SpellDef;
+import com.pwnerscape.client.entityhandling.defs.extras.AnimationDef;
+import com.pwnerscape.client.model.Sprite;
+import com.pwnerscape.interfaces.NComponent;
+import com.pwnerscape.interfaces.misc.AuctionHouse;
+import com.pwnerscape.interfaces.misc.BankInterface;
+import com.pwnerscape.interfaces.misc.BankPinInterface;
+import com.pwnerscape.interfaces.misc.FishingTrawlerInterface;
+import com.pwnerscape.interfaces.misc.IronManInterface;
+import com.pwnerscape.interfaces.misc.OnlineListInterface;
+import com.pwnerscape.interfaces.misc.ProgressBarInterface;
+import com.pwnerscape.interfaces.misc.QuestGuideInterface;
+import com.pwnerscape.interfaces.misc.SkillGuideInterface;
+import com.pwnerscape.interfaces.misc.ExperienceConfigInterface;
+import com.pwnerscape.interfaces.misc.DoSkillInterface;
+import com.pwnerscape.interfaces.misc.LostOnDeathInterface;
+import com.pwnerscape.interfaces.misc.TerritorySignupInterface;
+import com.pwnerscape.interfaces.misc.clan.Clan;
 
-import com.rsclegacy.interfaces.NCustomComponent;
+import com.pwnerscape.interfaces.NCustomComponent;
 import rsc.buffers.RSBufferUtils;
 import rsc.buffers.RSBuffer_Bits;
 import rsc.enumerations.GameMode;
@@ -732,6 +732,7 @@ public final class mudclient implements Runnable {
 				16728064, 16777215, '\uff00', '\uffff' };
 		private int playerLocalX;
 		private int playerLocalZ;
+		private boolean playerLocalSafeZone;
 		private final RSCharacter[] players = new RSCharacter[500];
 		private final RSCharacter[] playerServer = new RSCharacter[4000];
 		private final int[] playerSkinColors = new int[] { 15523536, 13415270, 11766848, 10056486, 9461792 };
@@ -1084,8 +1085,10 @@ public final class mudclient implements Runnable {
 							MenuItemAction.PLAYER_USE_ITEM, "Use " + this.m_ig + " with", this.selectedItemInventoryIndex);
 				} else {
 
-					if (var5 > 0
-							&& (player.currentZ - 64) / this.tileSize - (-this.worldOffsetZ - this.midRegionBaseZ) < 2203) {
+					/*if (var5 > 0
+							&& (player.currentZ - 64) / this.tileSize - (-this.worldOffsetZ - this.midRegionBaseZ) < 2203)*/
+
+					if (player.pvp) {
 						this.menuCommon.addCharacterItem(player.serverIndex, levelDelta >= 0 && levelDelta < 5
 								? MenuItemAction.PLAYER_ATTACK_SIMILAR : MenuItemAction.PLAYER_ATTACK_DIVERGENT, "Attack",
 										"@whi@" + name + level);
@@ -1390,9 +1393,9 @@ public final class mudclient implements Runnable {
 				byte var2 = 40;
 				if(Config.isAndroid())
 					var2 = -125;
-				this.panelLoginWelcome.addCenteredText(256, 190 + var2, "Welcome to RuneScape Classic Legacy", 4, true);
+				this.panelLoginWelcome.addCenteredText(256, 190 + var2, "Welcome to PwnerScape", 4, true);
 				String var3 = null;
-				var3 = "You need to create an account on rsclegacy.com to use this server";
+				var3 = "You need to create an account on pwnerscape.com to use this server";
 				if (null != var3) {
 					this.panelLoginWelcome.addCenteredText(256, 205 + var2, var3, 4, true);
 				}
@@ -3994,15 +3997,26 @@ public final class mudclient implements Runnable {
 								centerX = (int) (elixerSeconds % 60);
 								centerZ = (int) ((elixerSeconds / 60) % 60);
 								int elixerHour = (int) (elixerSeconds / 60 / 60);
-								if (inWild) {
-									this.getSurface().drawColoredStringCentered(this.getGameWidth() - 64,
-											"2X EXP: " + elixerHour + "h " + centerZ + "m " + centerX + "s", 0xFF00F5, 0, 0,
-											this.getGameHeight() - 62);
-								} else if (!inWild) {
-									this.getSurface().drawColoredStringCentered(this.getGameWidth() - 64,
-											"2X EXP: " + elixerHour + "h " + centerZ + "m " + centerX + "s", 0xFF00F5, 0, 1,
-											this.getGameHeight() - 7);
+
+								String text = "PVE";
+								int textColor = 0xFFFF00;
+								if (localPlayer.pvp) {
+									text = "PVP";
+									if (playerLocalSafeZone)
+										text += " (Safe)";
+									textColor = 0xFF0000;
+									this.getSurface().drawSprite(13 + mudclient.spriteMedia, this.getGameWidth() - 66, this.getGameHeight() - 62);
+								} else {
+									if (playerLocalSafeZone)
+										text += " (Safe)";
 								}
+								this.getSurface().drawColoredStringCentered(this.getGameWidth() - 53,
+										text, textColor, 0, 1,
+										this.getGameHeight() - 23);
+
+								this.getSurface().drawColoredStringCentered(this.getGameWidth() - 64,
+										"2X EXP: " + elixerHour + "h " + centerZ + "m " + centerX + "s", 0xFF00F5, 0, 1,
+										this.getGameHeight() - 7);
 							}
 						}
 						if(Config.KILL_FEED) {
@@ -4042,11 +4056,11 @@ public final class mudclient implements Runnable {
 							if (centerX > 0) {
 								inWild = true;
 								centerZ = centerX / 6 + 1;
-								this.getSurface().drawSprite(13 + mudclient.spriteMedia, this.getGameWidth() - 59, this.getGameHeight() - 56);
+								/*this.getSurface().drawSprite(13 + mudclient.spriteMedia, this.getGameWidth() - 59, this.getGameHeight() - 56);
 								this.getSurface().drawColoredStringCentered(this.getGameWidth() - 47, "Wilderness", 16776960, 0, 1,
 										this.getGameHeight() - 20);
 								this.getSurface().drawColoredStringCentered(this.getGameWidth() - 47, "Level: " + centerZ, 16776960, 0, 1,
-										this.getGameHeight() - 7);
+										this.getGameHeight() - 7);*/
 								if (this.showUiWildWarn == 0) {
 									this.showUiWildWarn = 2;
 								}
@@ -4911,10 +4925,14 @@ public final class mudclient implements Runnable {
 					}
 
 					if (Config.NAME_CLAN_TAG_OVERLAY && this.showUiTab == 0) {
+						int color = 0xffff00;
+						if (player.pvp)
+							color = 0xff0000;
+
 						if (player.displayName != null)
-							this.getSurface().drawShadowText(player.displayName, (width - this.getSurface().stringWidth(0, player.displayName)) / 2 + x + 1, y - 14, 0xffff00, 0, false);
+							this.getSurface().drawShadowText(player.displayName, (width - this.getSurface().stringWidth(0, player.displayName)) / 2 + x + 1, y - 14, color, 0, false);
 					}
-					if (Config.NAME_CLAN_TAG_OVERLAY && this.showUiTab == 0) {	
+					if (Config.NAME_CLAN_TAG_OVERLAY && this.showUiTab == 0) {
 						if (player.clanTag != null)
 							this.getSurface().drawColoredString((width - this.getSurface().stringWidth(0, "< " + player.clanTag + " >")) / 2 + x + 1, y - 5, "< " + player.clanTag + " >", 0, 0x7CADDA, 0);
 					}
@@ -8446,7 +8464,9 @@ public final class mudclient implements Runnable {
 									devMenuNpcID = Integer.parseInt(var11.split(" ")[1]);
 								} else if (var11.equalsIgnoreCase("::overlay")) {
 									Config.SIDE_MENU_OVERLAY = !Config.SIDE_MENU_OVERLAY;
-								} 
+								} else if (var11.equalsIgnoreCase("::auction")) {
+									auctionHouse.setVisible(true);
+								}
 								else {
 									this.sendCommandString(var11.substring(2));
 									String putQueue = var11.substring(2);
@@ -9869,6 +9889,8 @@ public final class mudclient implements Runnable {
 					this.playerLocalX = this.packetsIncoming.getBitMask(11);
 					this.playerLocalZ = this.packetsIncoming.getBitMask(13);
 					int direction = this.packetsIncoming.getBitMask(4);
+					boolean pvp = (this.packetsIncoming.getBitMask(1) == 1) ? true : false;
+					this.playerLocalSafeZone = (this.packetsIncoming.getBitMask(1) == 1) ? true : false;
 					boolean var24 = this.loadNextRegion(this.playerLocalZ, this.playerLocalX, false);
 					this.playerLocalX -= this.midRegionBaseX;
 					this.playerLocalZ -= this.midRegionBaseZ;
@@ -9884,6 +9906,7 @@ public final class mudclient implements Runnable {
 
 					this.localPlayer = this.createPlayer(var7, this.m_Zc, var6, 1,
 							RSCharacterDirection.lookup(direction));
+					localPlayer.pvp = pvp;
 					int dir = this.packetsIncoming.getBitMask(8);
 
 					for (int var9 = 0; dir > var9; ++var9) {
@@ -9899,6 +9922,7 @@ public final class mudclient implements Runnable {
 								var34.animationNext = this.packetsIncoming.getBitMask(2) + (needsNextSprite << 2);
 							} else {
 								int modelIndex = this.packetsIncoming.getBitMask(3);
+								var34.pvp = this.packetsIncoming.getBitMask(1) == 1 ? true : false;
 								int var33 = var34.waypointCurrent;
 								int var15 = var34.waypointsX[var33];
 								int var16 = var34.waypointsZ[var33];
@@ -9939,9 +9963,11 @@ public final class mudclient implements Runnable {
 						}
 
 						direction = this.packetsIncoming.getBitMask(4);
+						pvp = this.packetsIncoming.getBitMask(1) == 1 ? true : false;
 						var7 = 64 + (var11 + this.playerLocalZ) * this.tileSize;
 						var6 = (this.playerLocalX + var10) * this.tileSize + 64;
-						this.createPlayer(var7, var9, var6, 1, RSCharacterDirection.lookup(direction));
+						RSCharacter otherPlayer = this.createPlayer(var7, var9, var6, 1, RSCharacterDirection.lookup(direction));
+						otherPlayer.pvp = pvp;
 					}
 
 					this.packetsIncoming.endBitAccess();
@@ -11089,6 +11115,9 @@ public final class mudclient implements Runnable {
 										player.clanTag = this.packetsIncoming.readString();
 									} else {
 										player.clanTag = null;
+									}
+									if (packetsIncoming.getByte() == 1) {
+										player.pvp = (this.packetsIncoming.getUnsignedByte() == 1) ? true : false;
 									}
 								}
 							}

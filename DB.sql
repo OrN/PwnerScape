@@ -3662,7 +3662,7 @@ INSERT INTO `rscl_itemdef` (`id`, `bankNoteID`, `originalItemID`, `name`, `descr
 (2103, 0, -1, 'Fishing cape', 'The cape worn by the best fishermen', '', 0, 0, 0, 1, 1, 237, 2048, 11, 99, 10, 0, 0, 0, 0, 0, 99000),
 (2104, 0, -1, 'Fishing hood', 'Fishing skillcape hood', '', 0, 0, 0, 1, 1, 239, 33, 0, 99, 10, 0, 0, 0, 0, 0, 99000),
 (2105, 0, -1, 'Cooking cape', 'The cape worn by the world''s best chefs', '', 0, 0, 0, 1, 1, 238, 2048, 11, 99, 7, 0, 0, 0, 0, 0, 99000),
-(2106, 0, -1, 'Experience Elixir', 'A mysterious experience elixir once produced by hetty', 'Drink', 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2250),
+(2106, 0, -1, 'Experience Elixir', 'An elixir that grants double xp for an hour', 'Drink', 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2250),
 (2107, 0, -1, 'Teleport Stone', 'Teleports you to any town', 'Teleport', 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 150),
 (2108, 0, -1, 'Warrior cape', 'A red cape worn by warriors', '', 0, 0, 0, 0, 1, 240, 2048, 11, 1, 1, 0, 7, 0, 0, 0, 3075),
 (2109, -1, 2108, 'Warrior cape', 'Swap this note at any bank for the equivalent item.', '', 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3075),
