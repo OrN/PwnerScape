@@ -81,13 +81,9 @@ public final class Server implements Runnable {
 			LOGGER.info("\t Game Tick Cycle: {}", box(Constants.GameServer.GAME_TICK));
 			LOGGER.info("\t Client Version: {}", box(Constants.GameServer.CLIENT_VERSION));
 			LOGGER.info("\t Server type: " + (Constants.GameServer.MEMBER_WORLD ? "MEMBER" : "FREE" + " world."));
-			LOGGER.info("\t Combat Experience Rate: {}", box(Constants.GameServer.COMBAT_EXP_RATE));
-			LOGGER.info("\t Skilling Experience Rate: {}", box(Constants.GameServer.SKILLING_EXP_RATE));
+			LOGGER.info("\t Experience Rate: {}", box(Constants.GameServer.EXP_RATE));
 			LOGGER.info("\t Standard Subscription Rate: {}", box(Constants.GameServer.SUBSCRIBER_EXP_RATE));
 			LOGGER.info("\t Premium Subscription Rate: {}", box(Constants.GameServer.PREMIUM_EXP_RATE));
-			LOGGER.info("\t Wilderness Experience Boost: {}", box(Constants.GameServer.WILDERNESS_BOOST));
-			LOGGER.info("\t Skull Experience Boost: {}", box(Constants.GameServer.SKULL_BOOST)); 
-			LOGGER.info("\t Double experience: " + (Constants.GameServer.IS_DOUBLE_EXP ? "Enabled" : "Disabled")); 
 		}
 		if(server == null) {
 			server = new Server();

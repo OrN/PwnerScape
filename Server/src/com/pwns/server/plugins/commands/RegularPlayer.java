@@ -122,12 +122,7 @@ public final class RegularPlayer implements CommandListener {
 			+ "@gre@Subscription Status:@whi@ " + subscriptionStatus + " %"
 			+ "@gre@Subscription Expires:@whi@ " + player.getDaysSubscriptionLeft() + " days %" 
 			+ "@gre@Premium Expires:@whi@ " + player.premiumSubDaysLeft() + " days % %"
-			+ "@lre@Experience Rates:%"
-			+ "@gre@Attack, Strength, Defense, Hits:@whi@ " + player.getExperienceRate(0) + "x %"
-			+ "@gre@Prayer, Magic, Ranged:@whi@ " + player.getExperienceRate(4) + "x %"
-			+ "@gre@Skill XP Rate:@whi@ " + player.getExperienceRate(11) + "x %"
-			+ "@gre@Experience Elixir:@whi@ " + (GameStateUpdater.getElixerTime() > 0 ? DataConversions.getDateFromMsec(GameStateUpdater.getElixerTime() * 1000) : "--") + " %"
-			+ "@gre@Double Experience: " + (Constants.GameServer.IS_DOUBLE_EXP ? "@whi@ACTIVE!! %" : "@whi@-- % %"), true);
+			+ "@gre@XP Rate:@whi@ " + player.getExperienceRate(11) + "x %", true);
 			return;
 		}
 		if (command.equals("elixir")) {

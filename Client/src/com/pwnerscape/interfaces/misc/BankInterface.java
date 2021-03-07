@@ -80,7 +80,7 @@ public final class BankInterface {
 		mc.getSurface().drawLineVert(x + 9 + (mc.getSurface().stringWidth(0, "" + bankItems.size())), y + 6, 0xFFFFFF, 10);
 		drawString(Integer.toString(mc.bankItemsMax), x + 13 + (mc.getSurface().stringWidth(0, "" + bankItems.size())), y + 15, 0, 0xFFFFFF);
 		*/
-		drawString("The Bank of Legacy", x + 196, y + 15, 1, 0xFFFFFF);
+		drawString("Bank", x + 240, y + 15, 1, 0xFFFFFF);
 
 		int j3 = 0xFFFFFF;
 		if (mc.getMouseX() > x + 415 && mc.getMouseY() >= y && mc.getMouseX() < x + width && mc.getMouseY() < y + 12 + 9) {

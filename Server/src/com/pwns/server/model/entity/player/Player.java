@@ -572,6 +572,12 @@ public final class Player extends Mob {
 				message("You are not allowed to attack that person");
 				return false;
 			}
+
+			if (!getPVPMode() && !isPVP()) {
+				message("You need to be in @red@PVP@whi@ mode to attack other players");
+				return false;
+			}
+
 			return true;
 		} else if (mob.isNpc()) {
 			Npc victim = (Npc) mob;
@@ -1161,48 +1167,12 @@ public final class Player extends Mob {
 
 	public double getExperienceRate(int skill) {
 		double multiplier = 0;
-		/**
-		 * Skilling Experience Rate
-		 **/
-		if (skill >= 4 && skill <= 17) {
-			multiplier = Constants.GameServer.SKILLING_EXP_RATE; // 2.0 default.
-			if (isSubscriber()) {
-				multiplier += Constants.GameServer.SUBSCRIBER_EXP_RATE;// 1.0+ boost (combat and skilling).
-			}
-			if (isPremiumSubscriber()) {
-				multiplier += Constants.GameServer.PREMIUM_EXP_RATE; // 0.5+ boost skilling 
-			}
-			if (getLocation().inWilderness() && !getLocation().inBounds(220, 108, 225, 111)) {
-				multiplier += Constants.GameServer.WILDERNESS_BOOST; // 0.5+ boost in wild.
-				if (isSkulled()) {
-					multiplier += Constants.GameServer.SKULL_BOOST; // 1.0+ boost with skull.
-				}
-			}
+		multiplier = Constants.GameServer.EXP_RATE; // 2.0 default.
+		if (isSubscriber()) {
+			multiplier += Constants.GameServer.SUBSCRIBER_EXP_RATE;// 1.0+ boost (combat and skilling).
 		}
-		/**
-		 * Combat Experience Rate
-		 **/
-		else if (skill >= 0 && skill <= 3) { // Attack, Strength, Defense & HP bonus.
-			multiplier = Constants.GameServer.COMBAT_EXP_RATE; // 3.0 default. // 8.0
-			if(isSubscriber()) {
-				multiplier += 2.0; // 1.0+ subscriber combat boost. // 10
-			}
-			if (isPremiumSubscriber()) {
-				multiplier += 2.0; // 1.0+ premium combat boost. // 12
-			}
-			if (getLocation().inWilderness()) {
-				multiplier += Constants.GameServer.WILDERNESS_BOOST; // 0.5+ boost in wild.
-				if (isSkulled()) {
-					multiplier += Constants.GameServer.SKULL_BOOST; // 1.0+ boost with skull.
-				}
-			}
-		}
-
-		/**
-		 * Double Experience
-		 **/
-		if(Constants.GameServer.IS_DOUBLE_EXP) {
-			multiplier *= 2;
+		if (isPremiumSubscriber()) {
+			multiplier += Constants.GameServer.PREMIUM_EXP_RATE; // 0.5+ boost skilling
 		}
 
 		/**
@@ -1870,7 +1840,7 @@ public final class Player extends Mob {
 		}
 
 		if (isPVP()) {
-			message("You can't switch modes while flagged for @red@PVP@whi@!");
+			message("You cannot switch modes while flagged for @red@PVP@whi@!");
 			return;
 		}
 

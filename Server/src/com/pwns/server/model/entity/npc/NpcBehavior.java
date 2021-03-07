@@ -52,7 +52,7 @@ public class NpcBehavior {
 					|| (npc.getDef().isAggressive() && npc.getLocation().inWilderness()))) {
 				for (Player p : npc.getViewArea().getPlayersInView()) {
 					// 5 tiles away aggro for UndeadOne, rest should be 1 tile (RSC) we are using 2 tiles.
-					if (!canAggro(p) || !p.withinRange(npc, (npc.getID() == 542 ? 5 : 2))) {
+					if (!canAggro(p) || !p.withinRange(npc, (npc.getID() == 542 ? 5 : 1))) {
 						continue;
 					}
 					state = State.AGGRO;

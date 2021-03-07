@@ -488,7 +488,7 @@ public final class ClanInterface {
 				@Override
 				void handle() {
 					menuY = mc.mouseY - 7;
-					menuX = mc.mouseX - x / 2;
+					menuX = mc.mouseX;
 					menu_visible = true;
 					rightClickMenu.recalculateSize(0);
 					rightClickMenu.addCharacterItem_WithID(0,
@@ -500,6 +500,7 @@ public final class ClanInterface {
 					rightClickMenu.addCharacterItem_WithID(0,
 							"", MenuItemAction.CLAN_RANK_ALLOW_KICK,
 							"General+", 2);
+					menuX -= rightClickMenu.getWidth() / 2;
 				}
 			});
 			
@@ -507,7 +508,7 @@ public final class ClanInterface {
 				@Override
 				void handle() {
 					menuY = mc.mouseY - 7;
-					menuX = mc.mouseX - x / 2;
+					menuX = mc.mouseX;
 					menu_visible = true;
 					rightClickMenu.recalculateSize(0);
 					rightClickMenu.addCharacterItem_WithID(0,
@@ -519,6 +520,7 @@ public final class ClanInterface {
 					rightClickMenu.addCharacterItem_WithID(0,
 							"", MenuItemAction.CLAN_RANK_ALLOW_INVITE,
 							"General+", 2);
+					menuX -= rightClickMenu.getWidth() / 2;
 				}
 			});
 			
@@ -526,7 +528,7 @@ public final class ClanInterface {
 				@Override
 				void handle() {
 					menuY = mc.mouseY - 7;
-					menuX = mc.mouseX - x / 2;
+					menuX = mc.mouseX;
 					menu_visible = true;
 					rightClickMenu.recalculateSize(0);
 					rightClickMenu.addCharacterItem_WithID(0,
@@ -538,6 +540,7 @@ public final class ClanInterface {
 					rightClickMenu.addCharacterItem_WithID(0,
 							"", MenuItemAction.CLAN_ACCEPT_REQUESTS,
 							"Closed", 2);
+					menuX -= rightClickMenu.getWidth() / 2;
 				}
 			});
 

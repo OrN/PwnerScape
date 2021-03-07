@@ -1089,8 +1089,12 @@ public final class mudclient implements Runnable {
 							&& (player.currentZ - 64) / this.tileSize - (-this.worldOffsetZ - this.midRegionBaseZ) < 2203)*/
 
 					if (player.pvp) {
-						this.menuCommon.addCharacterItem(player.serverIndex, levelDelta >= 0 && levelDelta < 5
-								? MenuItemAction.PLAYER_ATTACK_SIMILAR : MenuItemAction.PLAYER_ATTACK_DIVERGENT, "Attack",
+						MenuItemAction action = MenuItemAction.PLAYER_ATTACK_DIVERGENT;
+						if (localPlayer.pvp)
+							action = (levelDelta >= 0 && levelDelta < 5) ? MenuItemAction.PLAYER_ATTACK_SIMILAR : MenuItemAction.PLAYER_ATTACK_DIVERGENT;
+
+						// levelDelta >= 0 && levelDelta < 5
+						this.menuCommon.addCharacterItem(player.serverIndex, action, "Attack",
 										"@whi@" + name + level);
 					} 
 					else {

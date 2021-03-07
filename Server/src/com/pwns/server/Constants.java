@@ -68,13 +68,9 @@ public final class Constants {
 		 */
 		public static String HMAC_PRIVATE_KEY = "";
 		/**
-		 * the combat experience rate
-		 */
-		public static double COMBAT_EXP_RATE = 5.0;
-		/**
 		 * the skilling experience rate
 		 */
-		public static double SKILLING_EXP_RATE = 8.0;
+		public static double EXP_RATE = 8.0;
 		/**
 		 * standard subscriber rate for members
 		 */
@@ -83,14 +79,6 @@ public final class Constants {
 		 * premium/ultimate subscriber rate for members
 		 */
 		public static double PREMIUM_EXP_RATE = 8.0;
-		/**
-		 * Wilderness extra boost multiplier
-		 */
-		public static double WILDERNESS_BOOST = 1.0;
-		/**
-		 * Skull extra boost multiplier
-		 */
-		public static double SKULL_BOOST = 0.5;
 		/**
 		 * A message players will receive upon login
 		 */
@@ -127,7 +115,6 @@ public final class Constants {
 		 * -1 the absolute max. Level Requirement, Max Damage
 		 */
 		public static final int[][] SPELLS = {{1, 1}, {5, 2}, {9, 2}, {13, 3}, {17, 3}, {23, 4}, {29, 4}, {35, 5}, {41, 5}, {47, 6}, {53, 6}, {59, 7}, {62, 8}, {65, 9}, {70, 10}, {75, 11}};
-		public static boolean IS_DOUBLE_EXP = false;
 		/**
 		 * 
 		 * @param file
@@ -155,13 +142,9 @@ public final class Constants {
 			// Game confs
 			WORLD_NUMBER = Integer.parseInt(props.getProperty("world_number"));
 			MEMBER_WORLD = Boolean.parseBoolean(props.getProperty("member_world"));
-			COMBAT_EXP_RATE = Double.parseDouble(props.getProperty("combat_exp_rate"));
-			SKILLING_EXP_RATE = Double.parseDouble(props.getProperty("skilling_exp_rate"));
+			EXP_RATE = Double.parseDouble(props.getProperty("exp_rate"));
 			SUBSCRIBER_EXP_RATE = Double.parseDouble(props.getProperty("subscriber_exp_rate"));
 			PREMIUM_EXP_RATE = Double.parseDouble(props.getProperty("premium_exp_rate"));
-			WILDERNESS_BOOST = Double.parseDouble(props.getProperty("wilderness_boost"));
-			SKULL_BOOST = Double.parseDouble(props.getProperty("skull_boost"));
-			IS_DOUBLE_EXP = Boolean.parseBoolean(props.getProperty("double_exp"));
 
 			START_TIME = System.currentTimeMillis();
 			props.clear();
