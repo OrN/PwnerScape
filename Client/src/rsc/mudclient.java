@@ -4002,27 +4002,29 @@ public final class mudclient implements Runnable {
 								centerZ = (int) ((elixerSeconds / 60) % 60);
 								int elixerHour = (int) (elixerSeconds / 60 / 60);
 
-								String text = "PVE";
-								int textColor = 0xFFFF00;
-								if (localPlayer.pvp) {
-									text = "PVP";
-									if (playerLocalSafeZone)
-										text += " (Safe)";
-									textColor = 0xFF0000;
-									this.getSurface().drawSprite(13 + mudclient.spriteMedia, this.getGameWidth() - 66, this.getGameHeight() - 62);
-								} else {
-									if (playerLocalSafeZone)
-										text += " (Safe)";
-								}
-								this.getSurface().drawColoredStringCentered(this.getGameWidth() - 53,
-										text, textColor, 0, 1,
-										this.getGameHeight() - 23);
-
 								this.getSurface().drawColoredStringCentered(this.getGameWidth() - 64,
 										"2X EXP: " + elixerHour + "h " + centerZ + "m " + centerX + "s", 0xFF00F5, 0, 1,
 										this.getGameHeight() - 7);
 							}
 						}
+
+						// Draw PVP info
+						String text = "PVE";
+						int textColor = 0xFFFF00;
+						if (localPlayer.pvp) {
+							text = "PVP";
+							if (playerLocalSafeZone)
+								text += " (Safe)";
+							textColor = 0xFF0000;
+							this.getSurface().drawSprite(13 + mudclient.spriteMedia, this.getGameWidth() - 66, this.getGameHeight() - 62);
+						} else {
+							if (playerLocalSafeZone)
+								text += " (Safe)";
+						}
+						this.getSurface().drawColoredStringCentered(this.getGameWidth() - 53,
+								text, textColor, 0, 1,
+								this.getGameHeight() - 23);
+
 						if(Config.KILL_FEED) {
 							killQueue.clean();
 							int Offset = 0;
