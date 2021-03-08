@@ -3,6 +3,7 @@ package com.pwns.server.plugins.skills;
 import static com.pwns.server.plugins.Functions.showBubble;
 
 import com.pwns.server.Constants;
+import com.pwns.server.TickTimer;
 import com.pwns.server.event.custom.BatchEvent;
 import com.pwns.server.external.EntityHandler;
 import com.pwns.server.external.ObjectWoodcuttingDef;
@@ -90,16 +91,16 @@ public class Woodcutting implements ObjectActionListener,
 			batchTimes = 12;
 			break;
 		}
-		
+
 		if(owner.isPremiumSubscriber())
 			batchTimes *= 2.0;
 		else if(owner.isSubscriber() && !owner.isPremiumSubscriber())
 			batchTimes *= 1.5;
 		
 		final int axeID = axeId;
-		Functions.showBubble(owner, new Item(axeId));
 		owner.message("You swing your " + EntityHandler.getItemDef(axeId).getName().toLowerCase() + " at the tree...");
-		owner.setBatchEvent(new BatchEvent(owner, 1600, batchTimes) {
+		Functions.showBubble(owner, new Item(axeId));
+		owner.setBatchEvent(new BatchEvent(owner, (int)TickTimer.getInstance().tickToMS(3), batchTimes) {
 			public void action() {
 				if (owner.getFatigue() >= 7500) {
 					owner.message("You are too tired to cut the tree");

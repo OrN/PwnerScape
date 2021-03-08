@@ -203,9 +203,6 @@ public final class GameStateUpdater {
 		processPlayers();
 		processNpcs();
 		processMessageQueues();
-		updateClients();
-		doCleanup();
-		executeWalkToActions();
 		/*final int HORIZONTAL_PLANES = (World.MAX_WIDTH / RegionManager.REGION_SIZE) + 1;
 		final int VERTICAL_PLANES = (World.MAX_HEIGHT / RegionManager.REGION_SIZE) + 1;
 		for (int x = 0; x < HORIZONTAL_PLANES; ++x)
@@ -610,6 +607,7 @@ public final class GameStateUpdater {
 					appearancePacket.writeShort(b.getOwner().getIndex());
 					appearancePacket.writeByte((byte) 0);
 					appearancePacket.writeShort(b.getID());
+					System.out.println("sent");
 				}
 				ChatMessage cm;
 				while ((cm = chatMessagesNeedingDisplayed.poll()) != null) {

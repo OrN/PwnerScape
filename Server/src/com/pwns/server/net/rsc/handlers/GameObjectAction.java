@@ -46,7 +46,6 @@ public class GameObjectAction implements PacketHandler {
 				player.resetAll();
 				String command = (click == 0 ? def.getCommand1() : def
 						.getCommand2()).toLowerCase();
-				player.face(object.getX(), object.getY());
 				if (PluginHandler.getPluginHandler().blockDefaultAction(
 						"ObjectAction",
 						new Object[] { object, command, player })) {

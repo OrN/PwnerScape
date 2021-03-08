@@ -124,6 +124,12 @@ public abstract class Mob extends Entity {
 	}
 
 	public final boolean atObject(GameObject o) {
+		if (isPlayer()) {
+			Player player = (Player)this;
+			if (player.hasMoved())
+				return false;
+		}
+
 		Point[] boundaries = o.getObjectBoundary();
 		Point low = boundaries[0];
 		Point high = boundaries[1];

@@ -7034,14 +7034,6 @@ public final class mudclient implements Runnable {
 								"@whi@Sound Effects - @gre@On", 0, (String) null, (String) null);
 					}
 	
-					if (!Config.BATCH_PROGRESS_BAR) {
-						this.panelSettings.setListEntry(this.controlSettingPanel, index++,
-								"@whi@Batch Progress Bar - @red@Off", 0, (String) null, (String) null);
-					} else {
-						this.panelSettings.setListEntry(this.controlSettingPanel, index++,
-								"@whi@Batch Progress Bar - @gre@On", 0, (String) null, (String) null);
-					}
-	
 					if (!Config.EXPERIENCE_DROPS) {
 						this.panelSettings.setListEntry(this.controlSettingPanel, index++,
 								"@whi@Experience Drops - @red@Off", 0, (String) null, (String) null);
@@ -7246,11 +7238,6 @@ public final class mudclient implements Runnable {
 								this.getClientStream().writeBuffer1.putByte(2);
 								this.getClientStream().writeBuffer1.putByte(this.optionSoundDisabled ? 1 : 0);
 								this.getClientStream().finishPacket();
-							}
-							
-							if (settingIndex == 3 && this.mouseButtonClick == 1) {
-								Config.BATCH_PROGRESS_BAR = !Config.BATCH_PROGRESS_BAR;
-								Config.saveConfiguration(false);
 							}
 							
 							if (settingIndex == 4 && this.mouseButtonClick == 1) {
@@ -9528,30 +9515,10 @@ public final class mudclient implements Runnable {
 					EntityHandler.npcs.set(id, newNpc);
 					return;
 				}
+				int actionType;
 				if (opcode == 134) {
 					int interfaceID = packetsIncoming.getByte();
 					switch (interfaceID) {
-					case 0:
-						if (!Config.BATCH_PROGRESS_BAR) {
-							batchProgressBar.hide();
-							return;
-						}
-						/* Progress bar */
-						int actionType = packetsIncoming.getByte() & 0xff;
-						if (actionType == 1) {
-							int delay = packetsIncoming.getShort();
-							int repeatFor = packetsIncoming.getByte() & 0xff;
-							batchProgressBar.initVariables(repeatFor, delay);
-							batchProgressBar.show();
-						}
-						if (actionType == 2) {
-							batchProgressBar.resetProgressBar();
-						}
-						if (actionType == 3) {
-							int repeat = packetsIncoming.getByte() & 0xff;
-							batchProgressBar.updateProgress(repeat);
-						}
-						break;
 					case 1:
 						int action = packetsIncoming.getByte();
 						if (action == 0) {
@@ -12965,7 +12932,6 @@ public final class mudclient implements Runnable {
 		private NComponent mainComponent;
 		private OnlineListInterface onlineList;
 		private NCustomComponent experienceOverlay;
-		private ProgressBarInterface batchProgressBar;
 		private BankPinInterface bankPinInterface;
 		private FishingTrawlerInterface fishingTrawlerInterface;
 		//private AchievementGUI achievementInterface;
@@ -13036,9 +13002,6 @@ public final class mudclient implements Runnable {
 						
 						fishingTrawlerInterface = new FishingTrawlerInterface(this);
 						mainComponent.addComponent(fishingTrawlerInterface);
-
-						batchProgressBar = new ProgressBarInterface(this);
-						mainComponent.addComponent(batchProgressBar.getComponent());
 
 						onlineList = new OnlineListInterface(this);
 						mainComponent.addComponent(onlineList);

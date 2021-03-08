@@ -34,11 +34,29 @@ public class Inventory {
 
 	private Player player;
 
+	private boolean updateInventory;
+	private boolean updateStats;
+
 	public Inventory(Player player) {
 		this.player = player;
+		updateInventory = false;
+		updateStats = false;
 	}
 
 	public Inventory() {
+		updateInventory = false;
+		updateStats = false;
+	}
+
+	public void sendClientUpdates() {
+		if (updateInventory) {
+			ActionSender.sendInventory(player);
+			updateInventory = false;
+		}
+		if (updateStats) {
+			ActionSender.sendEquipmentStats(player);
+			updateStats = false;
+		}
 	}
 
 	public void add(Item item) {
@@ -232,10 +250,8 @@ public class Inventory {
 					} else if (i.getDef().isStackable() && amount > i.getAmount()) {
 						return -1;
 					} else {
-						if (i.isWielded()) {
+						if (i.isWielded())
 							unwieldItem(i, false);
-							ActionSender.sendEquipmentStats(player);
-						}
 						iterator.remove();
 						ActionSender.sendRemoveItem(player, index);
 					}
@@ -299,7 +315,7 @@ public class Inventory {
 		if (item != null && item2 != null) {
 			list.set(slot, item2);
 			list.set(to, item);
-			ActionSender.sendInventory(player);
+			updateInventory = true;
 		}
 	}
 
@@ -359,8 +375,8 @@ public class Inventory {
 		player.updateWornItems(affectedItem.getDef().getWieldPosition(),
 				player.getSettings().getAppearance().getSprite(affectedItem.getDef().getWieldPosition()));
 
-		ActionSender.sendInventory(player);
-		ActionSender.sendEquipmentStats(player);
+		updateInventory = true;
+		updateStats = true;
 	}
 
 	public void wieldItem(Item item, boolean sound) {
@@ -463,9 +479,8 @@ public class Inventory {
 			player.playSound("click");
 		player.updateWornItems(item.getDef().getWieldPosition(), item.getDef().getAppearanceId());
 
-		// TODO: Don't send this for every weild
-		ActionSender.sendInventory(player);
-		ActionSender.sendEquipmentStats(player);
+		updateInventory = true;
+		updateStats = true;
 	}
 
 	public void dropOnDeath(Mob opponent) {

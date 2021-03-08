@@ -234,13 +234,15 @@ public final class Server implements Runnable {
 		for (Player p : World.getWorld().getPlayers())
 			p.processIncomingPackets();
 
-		getEventHandler().doEvents();
-
 		try {
 			long ticksPassed = TickTimer.getInstance().process();
 			if (ticksPassed > 0) {
 				tickEventHandler.doGameEvents();
 				gameUpdater.doUpdates();
+				getEventHandler().doEvents();
+				gameUpdater.executeWalkToActions();
+				gameUpdater.updateClients();
+				gameUpdater.doCleanup();
 			}
 
 			if (ticksPassed > 1) {

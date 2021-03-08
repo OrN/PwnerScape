@@ -56,24 +56,15 @@ public final class ItemDropHandler implements PacketHandler {
 		final int finalAmount = amount;
 
 		Server.getServer().getEventHandler().add(new DelayedEvent(player, 0) {
-			int dropTickCount = 0;
-
 			@Override
 			public void run() {
-				setDelay(500);
-				if (dropTickCount > 20) {
-					dropTickCount = 0;
-					stop();
-					return;
-				}
-				dropTickCount++;
-				if (owner.finishedPath()) {
-					stop();
+				if (!owner.hasMoved()) {
 					if (item.getDef().isStackable()) {
-						dropStackable(player, item, finalAmount);
+						dropStackable(owner, item, finalAmount);
 					} else {
-						dropUnstackable(player, item, finalAmount);
+						dropUnstackable(owner, item, finalAmount);
 					}
+					stop();
 				}
 			}
 		});
@@ -111,51 +102,35 @@ public final class ItemDropHandler implements PacketHandler {
 		}
 
 		player.setStatus(Action.DROPPING_GITEM);
-		Server.getServer().getEventHandler().add(new DelayedEvent(player, 500) {
-			int dropCount = 0;
+		if (!player.getInventory().contains(item) || player.getStatus() != Action.DROPPING_GITEM) {
+			player.setStatus(Action.IDLE);
+			return;
+		}
+		if (!player.getInventory().hasItemId(item.getID())) {
+			player.message("You don't have the entered amount to drop");
+			player.setStatus(Action.IDLE);
+			return;
+		}
+		ActionSender.sendSound(player, "dropobject");
+		if (PluginHandler.getPluginHandler().blockDefaultAction("Drop", new Object[] { player, item })) {
+			//TODO I GUESS???? if plugins allow to drop aswell and not completely stop?
+			//Not sure though - handle it all via plugins for specific blockAction.
+			player.setStatus(Action.IDLE);
+			return;
+		}
+		for (int i = 0; i < amount; i++) {
+			if (player.getInventory().remove(item) <= 0)
+				break;
+			GroundItem groundItem = new GroundItem(item.getID(), player.getX(), player.getY(), amount,
+					player);
+			World.getWorld().registerItem(groundItem);
+			GameLogging.addQuery(new GenericLog(player.getUsername() + " dropped " + item.getDef().getName()
+					+ " at " + player.getLocation().toString()));
+		}
 
-			public void run() {
-				if (!owner.getInventory().contains(item) || owner.getStatus() != Action.DROPPING_GITEM) {
-					matchRunning = false;
-					player.setStatus(Action.IDLE);
-					return;
-				}
-				if (owner.hasMoved()) {
-					this.stop();
-					player.setStatus(Action.IDLE);
-					return;
-				}
-				if (dropCount >= amount) {
-					matchRunning = false;
-					player.setStatus(Action.IDLE);
-					return;
-				}
-				if (!player.getInventory().hasItemId(item.getID())) {
-					player.message("You don't have the entered amount to drop");
-					matchRunning = false;
-					player.setStatus(Action.IDLE);
-					return;
-				}
-				ActionSender.sendSound(owner, "dropobject");
-				if (PluginHandler.getPluginHandler().blockDefaultAction("Drop", new Object[] { player, item })) {
-					stop();
-					//TODO I GUESS???? if plugins allow to drop aswell and not completely stop?
-					//Not sure though - handle it all via plugins for specific blockAction.
-					player.setStatus(Action.IDLE);
-					return;
-				}
-				if (owner.getInventory().remove(item) > -1) {
-					GroundItem groundItem = new GroundItem(item.getID(), owner.getX(), owner.getY(), amount,
-							owner);
-					World.getWorld().registerItem(groundItem);
-					GameLogging.addQuery(new GenericLog(owner.getUsername() + " dropped " + item.getDef().getName()
-							+ " at " + owner.getLocation().toString()));
-					dropCount++;
-					if (amount > 1)
-						player.message("Dropped " + dropCount + "/" + amount);
-				}
+		if (amount > 1)
+			player.message("Dropped " + amount);
 
-			}
-		});
+		player.setStatus(Action.IDLE);
 	}
 }

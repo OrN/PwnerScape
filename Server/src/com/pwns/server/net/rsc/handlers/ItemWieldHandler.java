@@ -1,6 +1,9 @@
 package com.pwns.server.net.rsc.handlers;
 
 import com.pwns.server.Constants;
+import com.pwns.server.Server;
+import com.pwns.server.event.DelayedEvent;
+import com.pwns.server.event.SingleEvent;
 import com.pwns.server.model.container.Item;
 import com.pwns.server.model.entity.player.Player;
 import com.pwns.server.model.world.World;
@@ -56,14 +59,24 @@ public final class ItemWieldHandler implements PacketHandler {
 						"Wield", new Object[] { player, item })) {
 					return;
 				}
-				player.getInventory().wieldItem(item, true);
+				Server.getServer().getEventHandler().add(new SingleEvent(player, 0) {
+					@Override
+					public void action() {
+						player.getInventory().wieldItem(item, true);
+					}
+				});
 			}
 		} else if (pID == packetTwo) {
 			if (item.isWielded()) {
 				if (PluginHandler.getPluginHandler().blockDefaultAction(
 						"UnWield", new Object[] { player, item }))
 					return;
-				player.getInventory().unwieldItem(item, true);
+				Server.getServer().getEventHandler().add(new SingleEvent(player, 0) {
+					@Override
+					public void action() {
+						player.getInventory().unwieldItem(item, true);
+					}
+				});
 			}
 		}
 	}

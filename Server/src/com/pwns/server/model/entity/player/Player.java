@@ -1469,6 +1469,7 @@ public final class Player extends Mob {
 	}
 
 	public void process() {
+		inventory.get().sendClientUpdates();
 	}
 
 	public void processIncomingPackets() {
@@ -1635,6 +1636,10 @@ public final class Player extends Mob {
 	public void setBatchEvent(BatchEvent batchEvent) {
 		if (batchEvent != null) {
 			this.batchEvent = batchEvent;
+
+			// TODO: Config to enable batching again some day
+			this.batchEvent.setRepeatFor(1);
+
 			Server.getServer().getEventHandler().add(batchEvent);
 		}
 	}
