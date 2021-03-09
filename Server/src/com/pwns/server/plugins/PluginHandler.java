@@ -18,6 +18,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 
+import com.pwns.server.event.SingleEvent;
 import com.pwns.server.util.ClassEnumerator;
 import com.pwns.server.event.custom.ShopRestockEvent;
 import com.pwns.server.model.Shop;
@@ -173,19 +174,16 @@ public final class PluginHandler {
 					}
 
 					if (go) {
-						final FutureTask<Integer> task = new FutureTask<Integer>(
-								new Callable<Integer>() {
-									@Override
-									public Integer call() throws Exception {
-										try {
-											m.invoke(c, data);
-										} catch (Exception cme) {
-											LOGGER.catching(cme);
-										}
-										return 1;
-									}
-								});
-						getExecutor().execute(task);
+						Server.getServer().getEventHandler().add(new SingleEvent(null, 0) {
+							@Override
+							public void action() {
+								try {
+									m.invoke(c, data);
+								} catch (Exception cme) {
+									LOGGER.catching(cme);
+								}
+							}
+						});
 					}
 				} catch (final Exception e) {
 					System.err.println("Exception at plugin handling: ");

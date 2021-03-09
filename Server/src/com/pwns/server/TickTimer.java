@@ -17,6 +17,10 @@ public class TickTimer {
         currentUpdate = System.currentTimeMillis();
     }
 
+    public long timer() {
+        return count;
+    }
+
     public long tickToMS(long count) {
         long currentTime = System.currentTimeMillis();
         long elapsed = currentTime - currentUpdate;
@@ -50,6 +54,7 @@ public class TickTimer {
             ticks = elapsed / Constants.GameServer.GAME_TICK;
             currentUpdate += ticks * Constants.GameServer.GAME_TICK;
         }
+        count += ticks;
         return ticks;
     }
 }

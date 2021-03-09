@@ -607,7 +607,6 @@ public final class GameStateUpdater {
 					appearancePacket.writeShort(b.getOwner().getIndex());
 					appearancePacket.writeByte((byte) 0);
 					appearancePacket.writeShort(b.getID());
-					System.out.println("sent");
 				}
 				ChatMessage cm;
 				while ((cm = chatMessagesNeedingDisplayed.poll()) != null) {
