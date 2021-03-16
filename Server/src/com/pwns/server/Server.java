@@ -237,10 +237,13 @@ public final class Server implements Runnable {
 		try {
 			long ticksPassed = TickTimer.getInstance().process();
 			if (ticksPassed > 0) {
-				tickEventHandler.doGameEvents();
-				gameUpdater.doUpdates();
-				getEventHandler().doEvents();
 				gameUpdater.executeWalkToActions();
+				tickEventHandler.doGameEvents();
+				getEventHandler().doEvents();
+				gameUpdater.processPlayers();
+				gameUpdater.processNpcs();
+				gameUpdater.processMessageQueues();
+				gameUpdater.processServerState();
 				gameUpdater.updateClients();
 				gameUpdater.doCleanup();
 			}

@@ -42,7 +42,6 @@ public class Woodcutting implements ObjectActionListener,
 			return;
 		}
 		if (def == null) { // This shoudln't happen
-			owner.message("Nothing interesting happens");
 			return;
 		}
 		if(def.getReqLevel() > 1 && !Constants.GameServer.MEMBER_WORLD) {

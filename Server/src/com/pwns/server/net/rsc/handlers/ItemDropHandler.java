@@ -58,7 +58,7 @@ public final class ItemDropHandler implements PacketHandler {
 		Server.getServer().getEventHandler().add(new DelayedEvent(player, 0) {
 			@Override
 			public void run() {
-				if (!owner.hasMoved()) {
+				if (owner.finishedPath()) {
 					if (item.getDef().isStackable()) {
 						dropStackable(owner, item, finalAmount);
 					} else {

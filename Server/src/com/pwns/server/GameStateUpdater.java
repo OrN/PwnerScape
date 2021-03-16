@@ -161,7 +161,7 @@ public final class GameStateUpdater {
 		} catch (Exception e) { e.printStackTrace(); }
 	}
 
-	private void processServerState() {
+	public void processServerState() {
 		// Check autosave timer, and autosave
 		long currentTime = System.currentTimeMillis();
 		if (currentTime >= autoSaveTime) {
@@ -196,24 +196,6 @@ public final class GameStateUpdater {
 				serverCache.store("double_xp_timer", 0);
 			}
 		}
-	}
-
-	public void doUpdates() throws Exception {
-		processServerState();
-		processPlayers();
-		processNpcs();
-		processMessageQueues();
-		/*final int HORIZONTAL_PLANES = (World.MAX_WIDTH / RegionManager.REGION_SIZE) + 1;
-		final int VERTICAL_PLANES = (World.MAX_HEIGHT / RegionManager.REGION_SIZE) + 1;
-		for (int x = 0; x < HORIZONTAL_PLANES; ++x)
-			for (int y = 0; y < VERTICAL_PLANES; ++y) {
-				Region r = RegionManager.getRegion(x * RegionManager.REGION_SIZE, y * RegionManager.REGION_SIZE);
-				if (r != null)
-					for (Iterator<Player> i = r.getPlayers().iterator(); i.hasNext();) {
-						if (i.next().isRemoved())
-							i.remove();
-					}
-			}*/
 	}
 
 	public void updateClients() {
@@ -279,7 +261,7 @@ public final class GameStateUpdater {
 		}
 	}
 
-	private void processNpcs() {
+	public void processNpcs() {
 		for (Npc n : npcs) {
 			try {
 				if (n.isUnregistering()) {
@@ -298,7 +280,7 @@ public final class GameStateUpdater {
 	/**
 	 * Updates the messages queues for each player
 	 */
-	private void processMessageQueues() {
+	public void processMessageQueues() {
 		for (Player p : players) {
 			PrivateMessage pm = p.getNextPrivateMessage();
 			if (pm != null) {
@@ -328,7 +310,7 @@ public final class GameStateUpdater {
 	 * Update the position of players, and check if who (and what) they are
 	 * aware of needs updated
 	 */
-	private void processPlayers() {
+	public void processPlayers() {
 		for (Player p : players) {
 			if (p.isUnregistering()) {
 				World.getWorld().unregisterPlayer(p);
